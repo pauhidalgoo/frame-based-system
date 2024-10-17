@@ -17,7 +17,7 @@ class IntentRecognition:
         hyperparams (dict): A dictionary of hyperparameters for model training.
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, hyperparams, model):
+    def __init__(self, model, hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
@@ -179,4 +179,4 @@ model.add(Conv1D(64, 4, padding="same"))
 model.add(GlobalMaxPooling1D())  # layer 2
 model.add(Dense(64, activation="relu"))  # layer 3
 
-intent_recognition = IntentRecognition(hyperparams, model)"""
+intent_recognition = IntentRecognition(model, hyperparams)"""
