@@ -6,6 +6,7 @@ import tensorflow as tf
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
+from datetime import datetime
 
 from keras.utils import to_categorical
 from keras.models import Sequential
@@ -37,7 +38,7 @@ class IntentRecognition:
             use_class_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name="test", save_results=True):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%Y%m%d_%H%M%S')}", save_results=True):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
@@ -430,7 +431,7 @@ class IntentRecognition:
         for i in range(0, len(predicted_labels)):
             if self.test_labels[i] != predicted_labels[i]:
                 print(i)
-                print('Sentence: ', self.test_sentences_removed[i]) # TODO: Fix, this isn't the corresponding sentence
+                print('Sentence: ', self.test_sentences_removed[i])
                 print('Original label: ', self.test_labels[i])
                 print('Predicted label: ', predicted_labels[i])
                 print()
