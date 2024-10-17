@@ -17,20 +17,27 @@ class IntentRecognition:
         hyperparams (dict): A dictionary of hyperparameters for model training.
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}):
+    def __init__(self, model, hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}, training_times=1, automatic_train=False, verbosing=0):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
         Args:
             hyperparams (dict): A dictionary containing hyperparameters like 'vocab_size', 'embedding_dim', 'epochs', and 'batch_size'.
             model (keras.models.Sequential): A Keras Sequential model to be trained.
+            training_times (int): Number of times the model should be trained.
+            automatic_train (bool): If True, automatically train and evaluate the model upon initialization.
         """
-        self.hyperparams = hyperparams  # Fixed typo
-        self.model = model
+        self.hyperparams = hyperparams
+        self.initial_model = model
+        self.training_times = training_times
+        self.verbosing = verbosing
+        self.training_information = {}
         self._load_data()
         self.preprocess_data()
-        self.train_model()
-        self.evaluate_model()
+
+        if automatic_train:
+            self.train_model()
+            self.evaluate_model()
     
     def _load_data(self):
         """
@@ -100,7 +107,6 @@ class IntentRecognition:
         self.label_encoder = LabelEncoder()
         self.train_numerical_labels = self.label_encoder.fit_transform(self.train_labels)
         self.num_classes = len(self.label_encoder.classes_)
-        print(f"Number of classes: {self.num_classes}")
         self.train_encoded_labels = to_categorical(self.train_numerical_labels, num_classes=self.num_classes)
 
         # Validation and test data
@@ -127,41 +133,131 @@ class IntentRecognition:
 
 
         # Print number of classes of training val and test
-        print(f"Number of classes in training data: {self.num_classes}")
+        if self.verbosing:
+            print(f"Number of classes in training data: {self.num_classes}")
     
     def train_model(self):
         """
-        Trains the Keras model using the training data and hyperparameters.
+        Trains the Keras model multiple times using the training data and hyperparameters.
+        Calculates average metrics and identifies the best model based on validation accuracy.
+        Stores the information in self.training_information.
         """
-        if not isinstance(self.model, Sequential):
+        if not isinstance(self.initial_model, Sequential):
             raise ValueError("Model must be an instance of a Keras Sequential model")
         
-        # Extract layers
-        layers = self.model.layers
-        print(layers)
-        # Create embedding layer
-        vocab_size = self.hyperparams['vocab_size']+1
+        # Extract layers from the initial model
+        initial_layers = self.initial_model.layers
+        # Vocabulary size and embedding dimensions
+        vocab_size = self.hyperparams['vocab_size'] + 1
         embedding_dim = self.hyperparams['embedding_dim']
 
-        # Add embedding layer
-        self.model = Sequential()
-        self.model.add(Embedding(vocab_size, embedding_dim))  # layer 1
-        for layer in layers:
-            self.model.add(layer)
-        self.model.add(Dense(self.num_classes, activation="softmax"))
-        print(self.model.layers)
-        self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-        self.model.fit(
-            self.train_pad_sequences, 
-            self.train_encoded_labels, 
-            batch_size=self.hyperparams['batch_size'], 
-            epochs=self.hyperparams['epochs'], 
-            validation_data=(self.val_pad_sequences, self.val_encoded_labels)
-        )
+        # Initialize lists to collect metrics across all training runs
+        training_acc_list = []
+        training_loss_list = []
+        val_acc_list = []
+        val_loss_list = []
+        histories = []
 
+        # Variables to track the best model
+        best_val_acc = -np.inf
+        best_history = None
+        best_model = None
+
+        for i in range(self.training_times):
+            print(f"\rTraining model {i+1}/{self.training_times}", end='', flush=True)
+
+            # Rebuild the model for each training run
+            self.model = Sequential()
+            self.model.add(Embedding(vocab_size, embedding_dim))  # Embedding layer
+            for layer in initial_layers:
+                # Clone each layer to ensure independence between models
+                config = layer.get_config()
+                cloned_layer = layer.__class__.from_config(config)
+                self.model.add(cloned_layer)
+            self.model.add(Dense(self.num_classes, activation="softmax"))  # Output layer
+
+            # Compile the model
+            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+            # Fit the model and capture the training history
+            history = self.model.fit(
+                self.train_pad_sequences, 
+                self.train_encoded_labels, 
+                batch_size=self.hyperparams['batch_size'], 
+                epochs=self.hyperparams['epochs'], 
+                validation_data=(self.val_pad_sequences, self.val_encoded_labels),
+                verbose=self.verbosing
+            )
+
+            histories.append(history.history)
+
+            # Extract the final epoch's metrics
+            final_epoch = self.hyperparams['epochs'] - 1
+            training_acc = history.history['accuracy'][final_epoch]
+            training_loss = history.history['loss'][final_epoch]
+            val_acc = history.history['val_accuracy'][final_epoch]
+            val_loss = history.history['val_loss'][final_epoch]
+
+            # Append metrics to the respective lists
+            training_acc_list.append(training_acc)
+            training_loss_list.append(training_loss)
+            val_acc_list.append(val_acc)
+            val_loss_list.append(val_loss)
+
+            # Update the best model if current model has higher validation accuracy
+            if val_acc > best_val_acc:
+                best_val_acc = val_acc
+                best_history = history.history
+                
+                # Copy the best model
+                best_model = tf.keras.models.clone_model(self.model)
+                best_model.set_weights(self.model.get_weights())
+
+
+        # Calculate average metrics across all training runs
+        average_training_acc = np.mean(training_acc_list)
+        average_training_loss = np.mean(training_loss_list)
+        average_val_acc = np.mean(val_acc_list)
+        average_val_loss = np.mean(val_loss_list)
+
+        # Extract the best model's per-epoch training and validation accuracy
+        best_model_training_acc = best_history['accuracy']
+        best_model_validation_acc = best_history['val_accuracy']
+
+        # Set the self.model to the best model
+        self.model = tf.keras.models.clone_model(best_model)
+        self.model.set_weights(best_model.get_weights())
+        self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+        # Store all the collected information in the training_information dictionary
+        self.training_information = {
+            'average_training_acc': average_training_acc,
+            'average_training_loss': average_training_loss,
+            'average_val_acc': average_val_acc,
+            'average_val_loss': average_val_loss,
+            'best_model_training_acc': best_model_training_acc,
+            'best_model_validation_acc': best_model_validation_acc
+        }
+
+        # Empty prints for new line
+        print('\n')
+
+    
+    def print_training_information(self):
+        """
+        Prints the training information containing average metrics and best model details.
+        """
+        print("Average Training Accuracy:", self.training_information['average_training_acc'])
+        print("Average Training Loss:", self.training_information['average_training_loss'])
+        print("Average Validation Accuracy:", self.training_information['average_val_acc'])
+        print("Average Validation Loss:", self.training_information['average_val_loss'])
+        print("Best Model Validation Accuracy:", self.training_information['best_model_validation_acc'][-1])
+        print()
+    
     def evaluate_model(self):
         """
         Evaluates the trained model on the test data and prints the accuracy.
+        Note: This evaluates the last trained model.
         """
         print('Evaluating model...')
         loss, accuracy = self.model.evaluate(
@@ -170,13 +266,12 @@ class IntentRecognition:
             batch_size=self.hyperparams['batch_size']
         )
         print(f"Test accuracy: {accuracy}")
+    
+    def get_training_information(self):
+        """
+        Retrieves the training information containing average metrics and best model details.
 
-
-"""hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}
-
-model = Sequential()
-model.add(Conv1D(64, 4, padding="same")) 
-model.add(GlobalMaxPooling1D())  # layer 2
-model.add(Dense(64, activation="relu"))  # layer 3
-
-intent_recognition = IntentRecognition(model, hyperparams)"""
+        Returns:
+            dict: A dictionary containing average training/validation metrics and best model's metrics.
+        """
+        return self.training_information
