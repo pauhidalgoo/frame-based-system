@@ -172,11 +172,11 @@ class IntentRecognition:
         print(f"Test accuracy: {accuracy}")
 
 
-hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}
+"""hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}
 
 model = Sequential()
 model.add(Conv1D(64, 4, padding="same")) 
 model.add(GlobalMaxPooling1D())  # layer 2
 model.add(Dense(64, activation="relu"))  # layer 3
 
-intent_recognition = IntentRecognition(hyperparams, model)
+intent_recognition = IntentRecognition(hyperparams, model)"""
