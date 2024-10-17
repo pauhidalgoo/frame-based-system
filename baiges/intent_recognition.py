@@ -122,8 +122,8 @@ class IntentRecognition:
         self.test_labels, self.test_pad_sequences = self._remove_values_and_indices(values_to_remove, self.test_labels, self.test_pad_sequences)
 
         # Encode labels
-        self.val_encoded_labels = to_categorical(self.label_encoder.transform(self.val_labels))
-        self.test_encoded_labels = to_categorical(self.label_encoder.transform(self.test_labels))
+        self.val_encoded_labels = to_categorical(self.label_encoder.transform(self.val_labels), num_classes=self.num_classes)
+        self.test_encoded_labels = to_categorical(self.label_encoder.transform(self.test_labels), num_classes=self.num_classes)
 
 
         # Print number of classes of training val and test
