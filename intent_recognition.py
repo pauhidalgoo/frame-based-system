@@ -10,6 +10,8 @@ from keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Embedding, LSTM, Dense, GlobalMaxPooling1D, Dropout, Conv1D, GlobalAveragePooling1D
 from sklearn.preprocessing import LabelEncoder
+from sklearn.utils.class_weight import compute_class_weight
+from keras.metrics import F1Score
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
@@ -21,7 +23,7 @@ class IntentRecognition:
         hyperparams (dict): A dictionary of hyperparameters for model training.
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}, training_times=1, automatic_train=False, verbosing=0):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
@@ -31,7 +33,12 @@ class IntentRecognition:
             training_times (int): Number of times the model should be trained.
             automatic_train (bool): If True, automatically train and evaluate the model upon initialization.
         """
-        self.hyperparams = hyperparams
+        default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}
+        self.hyperparams = {**default_hyperparams, **hyperparams}
+        default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None}
+        self.prep_config = {**default_config, **prep_config}
+        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_class_weights':True}
+        self.train_config = {**default_train, **train_config}
         self.initial_model = model
         self.training_times = training_times
         self.verbosing = verbosing
@@ -88,23 +95,23 @@ class IntentRecognition:
         cleaned_pad_sequences_list = [item for idx, item in enumerate(pad_sequences_list) if idx not in indices_to_remove]
         return cleaned_labels_list, np.array(cleaned_pad_sequences_list)
     
-    def preprocess_data(self, lemmatize=False, stem=False, remove_stopwords=False, custom_stopwords=None):
+    def preprocess_data(self):
         """
         Preprocesses the data by tokenizing sentences, sequencing, padding, and encoding labels.
         """
         lemmatizer = WordNetLemmatizer()
         stemmer = PorterStemmer()
         stop_words = set(stopwords.words('english'))
-        if custom_stopwords:
-            stop_words.update(custom_stopwords)
+        if self.prep_config['custom_stopwords']:
+            stop_words.update(self.prep_config['custom_stopwords'])
 
         def preprocess_text(sentence):
             words = word_tokenize(sentence)
-            if remove_stopwords:
+            if self.prep_config['remove_stopwords']:
                 words = [word for word in words if word not in stop_words]
-            if lemmatize:
+            if self.prep_config['lemmatize']:
                 words = [lemmatizer.lemmatize(word) for word in words]
-            if stem:
+            if self.prep_config['stem']:
                 words = [stemmer.stem(word) for word in words]
             return ' '.join(words)
 
@@ -154,8 +161,15 @@ class IntentRecognition:
         # Print number of classes of training val and test
         if self.verbosing:
             print(f"Number of classes in training data: {self.num_classes}")
+
+        class_weights = compute_class_weight(
+            class_weight='balanced',
+            classes=np.unique(self.train_numerical_labels),
+            y=self.train_numerical_labels
+        )
+        self.class_weights_dict = dict(enumerate(class_weights))
     
-    def train_model(self, selection_metric="accuracy", class_weights= [], f1_type="macro"):
+    def train_model(self):
         """
         Trains the Keras model multiple times using the training data and hyperparameters.
         Calculates average metrics and identifies the best model based on validation accuracy.
@@ -164,6 +178,8 @@ class IntentRecognition:
         if not isinstance(self.initial_model, Sequential):
             raise ValueError("Model must be an instance of a Keras Sequential model")
         
+
+        class_weights_dict = self.class_weights_dict if self.train_config['use_class_weights'] else None
         # Extract layers from the initial model
         initial_layers = self.initial_model.layers
         # Vocabulary size and embedding dimensions
@@ -199,7 +215,7 @@ class IntentRecognition:
             self.model.add(Dense(self.num_classes, activation="softmax"))  # Output layer
 
             # Compile the model
-            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'f1_score'])
+            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', F1Score(average=self.train_config['f1_type'])])
 
             # Fit the model and capture the training history
             history = self.model.fit(
@@ -208,6 +224,7 @@ class IntentRecognition:
                 batch_size=self.hyperparams['batch_size'], 
                 epochs=self.hyperparams['epochs'], 
                 validation_data=(self.val_pad_sequences, self.val_encoded_labels),
+                class_weight=class_weights_dict,
                 verbose=self.verbosing
             )
 
@@ -216,11 +233,11 @@ class IntentRecognition:
             # Extract the final epoch's metrics
             final_epoch = self.hyperparams['epochs'] - 1
             training_acc = history.history['accuracy'][final_epoch]
-            training_f1 = np.mean(history.history['f1_score'][final_epoch])
+            training_f1 = history.history['f1_score'][final_epoch]
 
             training_loss = history.history['loss'][final_epoch]
             val_acc = history.history['val_accuracy'][final_epoch]
-            val_f1 = np.mean(history.history['val_f1_score'][final_epoch])
+            val_f1 = history.history['val_f1_score'][final_epoch]
             val_loss = history.history['val_loss'][final_epoch]
 
             # Append metrics to the respective lists
@@ -232,7 +249,7 @@ class IntentRecognition:
             val_loss_list.append(val_loss)
 
             # Update the best model if current model has higher validation accuracy
-            if selection_metric == "accuracy":
+            if self.train_config['selection_metric'] == "accuracy":
                 if val_acc > best_val_acc:
                     best_val_acc = val_acc
                     best_history = history.history
@@ -298,10 +315,10 @@ class IntentRecognition:
         print("Average Validation F1:", self.training_information['average_val_f1'])
         print("Average Validation Loss:", self.training_information['average_val_loss'])
         print("Best Model Validation Accuracy:", self.training_information['best_model_validation_acc'][-1])
-        print("Best Model Validation F1:", np.mean(self.training_information['best_model_validation_f1'][-1]))
+        print("Best Model Validation F1:", self.training_information['best_model_validation_f1'][-1])
         print()
     
-    def evaluate_model(self, f1_type="macro"):
+    def evaluate_model(self):
         """
         Evaluates the trained model on the test data and prints the accuracy.
         Note: This evaluates the last trained model.
@@ -315,7 +332,7 @@ class IntentRecognition:
 
         f1 = np.mean(f1)
         print(f"Test accuracy: {accuracy}")
-        print(f"Test F!: {f1}")
+        print(f"Test Macro F1: {f1}")
     
     def get_training_information(self):
         """
