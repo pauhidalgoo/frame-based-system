@@ -38,7 +38,7 @@ class IntentRecognition:
             use_class_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%Y%m%d_%H%M%S')}", save_results=True):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", save_results=True):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
