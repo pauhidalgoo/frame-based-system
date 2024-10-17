@@ -2,6 +2,10 @@ import random
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer, PorterStemmer
+from nltk.tokenize import word_tokenize
+
 from keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Embedding, LSTM, Dense, GlobalMaxPooling1D, Dropout, Conv1D, GlobalAveragePooling1D
@@ -84,13 +88,28 @@ class IntentRecognition:
         cleaned_pad_sequences_list = [item for idx, item in enumerate(pad_sequences_list) if idx not in indices_to_remove]
         return cleaned_labels_list, np.array(cleaned_pad_sequences_list)
     
-    def preprocess_data(self):
+    def preprocess_data(self, lemmatize=False, stem=False, remove_stopwords=False, custom_stopwords=None):
         """
         Preprocesses the data by tokenizing sentences, sequencing, padding, and encoding labels.
         """
+        lemmatizer = WordNetLemmatizer()
+        stemmer = PorterStemmer()
+        stop_words = set(stopwords.words('english'))
+        if custom_stopwords:
+            stop_words.update(custom_stopwords)
+
+        def preprocess_text(sentence):
+            words = word_tokenize(sentence)
+            if remove_stopwords:
+                words = [word for word in words if word not in stop_words]
+            if lemmatize:
+                words = [lemmatizer.lemmatize(word) for word in words]
+            if stem:
+                words = [stemmer.stem(word) for word in words]
+            return ' '.join(words)
 
         # Training data
-        self.train_sentences = list(self.train_data[0])
+        self.train_sentences = [preprocess_text(sent) for sent in list(self.train_data[0])]
         self.train_labels = self._format_labels(list(self.train_data[2]))
 
         # Tokenize the sentences
@@ -110,8 +129,8 @@ class IntentRecognition:
         self.train_encoded_labels = to_categorical(self.train_numerical_labels, num_classes=self.num_classes)
 
         # Validation and test data
-        self.val_sentences = list(self.val_data[0])
-        self.test_sentences = list(self.test_data[0])
+        self.val_sentences = [preprocess_text(sent) for sent in list(self.val_data[0])]
+        self.test_sentences = [preprocess_text(sent) for sent in list(self.test_data[0])]
 
         self.val_sequences = self.tokenizer.texts_to_sequences(self.val_sentences)
         self.test_sequences = self.tokenizer.texts_to_sequences(self.test_sentences)
@@ -136,7 +155,7 @@ class IntentRecognition:
         if self.verbosing:
             print(f"Number of classes in training data: {self.num_classes}")
     
-    def train_model(self):
+    def train_model(self, selection_metric="accuracy", class_weights= [], f1_type="macro"):
         """
         Trains the Keras model multiple times using the training data and hyperparameters.
         Calculates average metrics and identifies the best model based on validation accuracy.
@@ -153,13 +172,16 @@ class IntentRecognition:
 
         # Initialize lists to collect metrics across all training runs
         training_acc_list = []
+        training_f1_list = []
         training_loss_list = []
         val_acc_list = []
+        val_f1_list = []
         val_loss_list = []
         histories = []
 
         # Variables to track the best model
         best_val_acc = -np.inf
+        best_val_f1 = -np.inf
         best_history = None
         best_model = None
 
@@ -177,7 +199,7 @@ class IntentRecognition:
             self.model.add(Dense(self.num_classes, activation="softmax"))  # Output layer
 
             # Compile the model
-            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'f1_score'])
 
             # Fit the model and capture the training history
             history = self.model.fit(
@@ -194,49 +216,71 @@ class IntentRecognition:
             # Extract the final epoch's metrics
             final_epoch = self.hyperparams['epochs'] - 1
             training_acc = history.history['accuracy'][final_epoch]
+            training_f1 = np.mean(history.history['f1_score'][final_epoch])
+
             training_loss = history.history['loss'][final_epoch]
             val_acc = history.history['val_accuracy'][final_epoch]
+            val_f1 = np.mean(history.history['val_f1_score'][final_epoch])
             val_loss = history.history['val_loss'][final_epoch]
 
             # Append metrics to the respective lists
             training_acc_list.append(training_acc)
+            training_f1_list.append(training_f1)
             training_loss_list.append(training_loss)
             val_acc_list.append(val_acc)
+            val_f1_list.append(val_f1)
             val_loss_list.append(val_loss)
 
             # Update the best model if current model has higher validation accuracy
-            if val_acc > best_val_acc:
-                best_val_acc = val_acc
-                best_history = history.history
-                
-                # Copy the best model
-                best_model = tf.keras.models.clone_model(self.model)
-                best_model.set_weights(self.model.get_weights())
-
+            if selection_metric == "accuracy":
+                if val_acc > best_val_acc:
+                    best_val_acc = val_acc
+                    best_history = history.history
+                    
+                    # Copy the best model
+                    best_model = tf.keras.models.clone_model(self.model)
+                    best_model.set_weights(self.model.get_weights())
+            else:
+                if val_f1 > best_val_f1:
+                    best_val_f1 = val_f1
+                    best_history = history.history
+                    
+                    # Copy the best model
+                    best_model = tf.keras.models.clone_model(self.model)
+                    best_model.set_weights(self.model.get_weights())
 
         # Calculate average metrics across all training runs
         average_training_acc = np.mean(training_acc_list)
+        average_training_f1 = np.mean(training_f1_list)
         average_training_loss = np.mean(training_loss_list)
         average_val_acc = np.mean(val_acc_list)
+        average_val_f1 = np.mean(val_f1_list)
         average_val_loss = np.mean(val_loss_list)
 
         # Extract the best model's per-epoch training and validation accuracy
         best_model_training_acc = best_history['accuracy']
         best_model_validation_acc = best_history['val_accuracy']
 
+        best_model_training_f1 = best_history['f1_score']
+        best_model_validation_f1 = best_history['val_f1_score']
+
         # Set the self.model to the best model
         self.model = tf.keras.models.clone_model(best_model)
         self.model.set_weights(best_model.get_weights())
-        self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+        self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'f1_score'])
 
         # Store all the collected information in the training_information dictionary
         self.training_information = {
             'average_training_acc': average_training_acc,
+            'average_training_f1': average_training_f1,
             'average_training_loss': average_training_loss,
             'average_val_acc': average_val_acc,
+            'average_val_f1': average_val_f1,
             'average_val_loss': average_val_loss,
             'best_model_training_acc': best_model_training_acc,
-            'best_model_validation_acc': best_model_validation_acc
+            'best_model_training_f1': best_model_training_f1,
+            'best_model_validation_acc': best_model_validation_acc,
+            'best_model_validation_f1': best_model_validation_f1
         }
 
         # Empty prints for new line
@@ -248,24 +292,30 @@ class IntentRecognition:
         Prints the training information containing average metrics and best model details.
         """
         print("Average Training Accuracy:", self.training_information['average_training_acc'])
+        print("Average Training F1:", self.training_information['average_training_f1'])
         print("Average Training Loss:", self.training_information['average_training_loss'])
         print("Average Validation Accuracy:", self.training_information['average_val_acc'])
+        print("Average Validation F1:", self.training_information['average_val_f1'])
         print("Average Validation Loss:", self.training_information['average_val_loss'])
         print("Best Model Validation Accuracy:", self.training_information['best_model_validation_acc'][-1])
+        print("Best Model Validation F1:", np.mean(self.training_information['best_model_validation_f1'][-1]))
         print()
     
-    def evaluate_model(self):
+    def evaluate_model(self, f1_type="macro"):
         """
         Evaluates the trained model on the test data and prints the accuracy.
         Note: This evaluates the last trained model.
         """
         print('Evaluating model...')
-        loss, accuracy = self.model.evaluate(
+        loss, accuracy, f1 = self.model.evaluate(
             self.test_pad_sequences, 
             self.test_encoded_labels, 
             batch_size=self.hyperparams['batch_size']
         )
+
+        f1 = np.mean(f1)
         print(f"Test accuracy: {accuracy}")
+        print(f"Test F!: {f1}")
     
     def get_training_information(self):
         """
@@ -275,3 +325,16 @@ class IntentRecognition:
             dict: A dictionary containing average training/validation metrics and best model's metrics.
         """
         return self.training_information
+    
+    def view_wrong_predictions(self):
+        probs = self.model.predict(self.test_pad_sequences)
+        _predicted_labels = np.argmax(probs, axis=1)
+        predicted_labels = self.label_encoder.inverse_transform(_predicted_labels)
+
+        for i in range(0, len(predicted_labels)):
+            if self.test_labels[i] != predicted_labels[i]:
+                print(i)
+                print('Sentence: ', self.test_sentences[i]) # TODO: Fix, this isn't the corresponding sentence
+                print('Original label: ', self.test_labels[i])
+                print('Predicted label: ', predicted_labels[i])
+                print()
