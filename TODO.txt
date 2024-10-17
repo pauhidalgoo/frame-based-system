@@ -1,13 +1,15 @@
 - Add EarlyStopping parameter
-- Add lemmatizer, lower
 - Add RNN
 - ADD LSTM
 - ADD GRU
 - Combine with attention
 
 
-- Fix class parameters
-- F1 weighted (np.sum(f1 * support) / np.sum(support))
 - Fix wrong sentences showing
 - Save to CSV results
 - Plot results
+
+
+Notes:
+
+lower doesn't make sense, all sentences are already lower

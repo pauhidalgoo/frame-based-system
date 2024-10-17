@@ -21,6 +21,19 @@ class IntentRecognition:
 
     Attributes:
         hyperparams (dict): A dictionary of hyperparameters for model training.
+            vocab_size
+            embedding_dim
+            epochs
+            batch_size
+        prep_config (dict): A dictionary of parameters for sentence preprocessing
+            lemmatize
+            stem
+            remove_stopwords
+            custom_stopwords
+        train_config (dict): A dictionary of parameters for training
+            selection_metric
+            f1_type
+            use_class_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
     def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0):
@@ -33,7 +46,7 @@ class IntentRecognition:
             training_times (int): Number of times the model should be trained.
             automatic_train (bool): If True, automatically train and evaluate the model upon initialization.
         """
-        default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 1, 'batch_size': 32}
+        default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 5, 'batch_size': 32}
         self.hyperparams = {**default_hyperparams, **hyperparams}
         default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None}
         self.prep_config = {**default_config, **prep_config}
@@ -78,7 +91,7 @@ class IntentRecognition:
         labels = list(s.replace(' ', '') for s in labels)
         return labels
     
-    def _remove_values_and_indices(self, values_to_remove, labels_list, pad_sequences_list):
+    def _remove_values_and_indices(self, values_to_remove, labels_list, pad_sequences_list, only_remove=False):
         """
         Removes specified values and their corresponding indices from labels and sequences.
 
@@ -93,7 +106,11 @@ class IntentRecognition:
         indices_to_remove = [idx for idx, item in enumerate(labels_list) if item in values_to_remove]
         cleaned_labels_list = [item for item in labels_list if item not in values_to_remove]
         cleaned_pad_sequences_list = [item for idx, item in enumerate(pad_sequences_list) if idx not in indices_to_remove]
-        return cleaned_labels_list, np.array(cleaned_pad_sequences_list)
+
+        if not only_remove:
+            cleaned_pad_sequences_list = np.array(cleaned_pad_sequences_list) 
+            
+        return cleaned_labels_list, cleaned_pad_sequences_list
     
     def preprocess_data(self):
         """
@@ -140,6 +157,7 @@ class IntentRecognition:
         self.test_sentences = [preprocess_text(sent) for sent in list(self.test_data[0])]
 
         self.val_sequences = self.tokenizer.texts_to_sequences(self.val_sentences)
+        test_sequences_pretok = self.test_sentences.copy()
         self.test_sequences = self.tokenizer.texts_to_sequences(self.test_sentences)
 
         self.val_pad_sequences = pad_sequences(self.val_sequences, maxlen=max_seq_len, padding='post')
@@ -151,7 +169,10 @@ class IntentRecognition:
         # Remove unwanted labels that don't appear in the training data
         values_to_remove = ['day_name','airfare+flight','flight+airline','flight_no+airline']
         self.val_labels, self.val_pad_sequences = self._remove_values_and_indices(values_to_remove, self.val_labels, self.val_pad_sequences)
+
+        old_test_labels = np.array(self.test_labels.copy())
         self.test_labels, self.test_pad_sequences = self._remove_values_and_indices(values_to_remove, self.test_labels, self.test_pad_sequences)
+        _ , self.test_sentences_removed = self._remove_values_and_indices(values_to_remove, old_test_labels, test_sequences_pretok, only_remove=True)
 
         # Encode labels
         self.val_encoded_labels = to_categorical(self.label_encoder.transform(self.val_labels), num_classes=self.num_classes)
@@ -351,7 +372,7 @@ class IntentRecognition:
         for i in range(0, len(predicted_labels)):
             if self.test_labels[i] != predicted_labels[i]:
                 print(i)
-                print('Sentence: ', self.test_sentences[i]) # TODO: Fix, this isn't the corresponding sentence
+                print('Sentence: ', self.test_sentences_removed[i]) # TODO: Fix, this isn't the corresponding sentence
                 print('Original label: ', self.test_labels[i])
                 print('Predicted label: ', predicted_labels[i])
                 print()
