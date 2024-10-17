@@ -1,5 +1,6 @@
 import random
 import pandas as pd
+import csv
 import numpy as np
 import tensorflow as tf
 from nltk.corpus import stopwords
@@ -36,7 +37,7 @@ class IntentRecognition:
             use_class_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name="test", save_results=True):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
@@ -46,6 +47,8 @@ class IntentRecognition:
             training_times (int): Number of times the model should be trained.
             automatic_train (bool): If True, automatically train and evaluate the model upon initialization.
         """
+        self.architecture_name = name
+        self.save_results = save_results
         default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 5, 'batch_size': 32}
         self.hyperparams = {**default_hyperparams, **hyperparams}
         default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None}
@@ -111,6 +114,15 @@ class IntentRecognition:
             cleaned_pad_sequences_list = np.array(cleaned_pad_sequences_list) 
             
         return cleaned_labels_list, cleaned_pad_sequences_list
+    
+    def _save_results(self, results_dict, file_path, header=None):
+        if self.save_results != None:
+            if self.save_results == "few" and file_path == "./results/complete_results.csv":
+                pass
+            with open(file_path, mode='a', newline='') as file:
+                writer = csv.DictWriter(file, fieldnames=header if header else results_dict[0].keys())
+                #writer.writeheader() # Uncomment if the files aren't created
+                writer.writerows(results_dict)
     
     def preprocess_data(self):
         """
@@ -221,6 +233,7 @@ class IntentRecognition:
         best_val_f1 = -np.inf
         best_history = None
         best_model = None
+        complete_results = []
 
         for i in range(self.training_times):
             print(f"\rTraining model {i+1}/{self.training_times}", end='', flush=True)
@@ -250,6 +263,23 @@ class IntentRecognition:
             )
 
             histories.append(history.history)
+
+            for epoch in range(self.hyperparams['epochs']):
+                epoch_result = {
+                    'architecture_name': self.architecture_name,
+                    'run_number': i + 1,
+                    'epoch': epoch + 1,
+                    'training_acc': history.history['accuracy'][epoch],
+                    'training_f1': history.history['f1_score'][epoch],
+                    'training_loss': history.history['loss'][epoch],
+                    'val_acc': history.history['val_accuracy'][epoch],
+                    'val_f1': history.history['val_f1_score'][epoch],
+                    'val_loss': history.history['val_loss'][epoch],
+                    **self.hyperparams, # ** el que fa és separa les keys i values dels diccionaris ;) tope útil ho vaig aprendre fa poc
+                    **self.prep_config, # un sol * crec que separa els valors d'un iterador
+                    **self.train_config
+                }
+                complete_results.append(epoch_result)
 
             # Extract the final epoch's metrics
             final_epoch = self.hyperparams['epochs'] - 1
@@ -320,6 +350,34 @@ class IntentRecognition:
             'best_model_validation_acc': best_model_validation_acc,
             'best_model_validation_f1': best_model_validation_f1
         }
+
+        self._save_results(complete_results, './results/complete_results.csv')
+        average_metrics = [{
+            'architecture_name': self.architecture_name,
+            'average_training_acc': average_training_acc,
+            'average_training_f1': average_training_f1,
+            'average_training_loss': average_training_loss,
+            'average_val_acc': average_val_acc,
+            'average_val_f1': average_val_f1,
+            'average_val_loss': average_val_loss,
+            **self.hyperparams,
+            **self.prep_config,
+            **self.train_config
+        }]
+        self._save_results(average_metrics, './results/average_metrics.csv')
+
+        best_metrics = [{
+            'architecture_name': self.architecture_name,
+            'best_model_training_acc': best_model_training_acc[-1],
+            'best_model_training_f1': best_model_training_f1[-1],
+            'best_model_validation_acc': best_model_validation_acc[-1],
+            'best_model_validation_f1': best_model_validation_f1[-1],
+            **self.hyperparams,
+            **self.prep_config,
+            **self.train_config
+        }]
+        self._save_results(best_metrics, './results/best_model_metrics.csv')
+
 
         # Empty prints for new line
         print('\n')

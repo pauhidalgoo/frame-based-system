@@ -1,0 +1,2 @@
+architecture_name,average_training_acc,average_training_f1,average_training_loss,average_val_acc,average_val_f1,average_val_loss,vocab_size,embedding_dim,epochs,batch_size,lemmatize,stem,remove_stopwords,custom_stopwords,selection_metric,f1_type,use_class_weights
+test,0.2505639955401421,0.09227491766214371,3.151899719238281,0.4993333399295807,0.16147567927837372,2.7886066913604735,500,768,1,32,False,False,False,,accuracy,macro,True

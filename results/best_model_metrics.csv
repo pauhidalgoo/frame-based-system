@@ -1,0 +1,2 @@
+architecture_name,best_model_training_acc,best_model_training_f1,best_model_validation_acc,best_model_validation_f1,vocab_size,embedding_dim,epochs,batch_size,lemmatize,stem,remove_stopwords,custom_stopwords,selection_metric,f1_type,use_class_weights
+test,0.2457086741924286,0.08535946160554886,0.846666693687439,0.19524502754211426,500,768,1,32,False,False,False,,accuracy,macro,True
