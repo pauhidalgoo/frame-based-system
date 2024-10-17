@@ -1,0 +1,6 @@
+- Add EarlyStopping parameter
+- Add lemmatizer, lower
+- Add RNN
+- ADD LSTM
+- ADD GRU
+- Combine with attention
