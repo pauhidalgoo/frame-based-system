@@ -237,7 +237,8 @@ class IntentRecognition:
         complete_results = []
 
         for i in range(self.training_times):
-            print(f"\rTraining model {i+1}/{self.training_times}", end='', flush=True)
+            if self.verbosing != 0:
+                print(f"\rTraining model {i+1}/{self.training_times}", end='', flush=True)
 
             # Rebuild the model for each training run
             self.model = Sequential()
@@ -381,7 +382,8 @@ class IntentRecognition:
 
 
         # Empty prints for new line
-        print('\n')
+        if self.verbosing != 0:
+            print('\n')
 
     
     def print_training_information(self):
