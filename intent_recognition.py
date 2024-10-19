@@ -268,6 +268,7 @@ class IntentRecognition:
             for epoch in range(self.hyperparams['epochs']):
                 epoch_result = {
                     'architecture_name': self.architecture_name,
+                    'summary': self.model.summary(),
                     'run_number': i + 1,
                     'epoch': epoch + 1,
                     'training_acc': history.history['accuracy'][epoch],
@@ -355,6 +356,7 @@ class IntentRecognition:
         self._save_results(complete_results, './results/complete_results.csv')
         average_metrics = [{
             'architecture_name': self.architecture_name,
+            'summary': self.model.summary(),
             'average_training_acc': average_training_acc,
             'average_training_f1': average_training_f1,
             'average_training_loss': average_training_loss,
@@ -369,6 +371,7 @@ class IntentRecognition:
 
         best_metrics = [{
             'architecture_name': self.architecture_name,
+            'summary': self.model.summary(),
             'best_model_training_acc': best_model_training_acc[-1],
             'best_model_training_f1': best_model_training_f1[-1],
             'best_model_validation_acc': best_model_validation_acc[-1],
