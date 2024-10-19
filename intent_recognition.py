@@ -122,7 +122,7 @@ class IntentRecognition:
                 pass
             with open(file_path, mode='a', newline='', encoding="utf-8") as file:
                 writer = csv.DictWriter(file, fieldnames=header if header else results_dict[0].keys())
-                writer.writeheader() # Uncomment if the files aren't created
+                # writer.writeheader() # Uncomment if the files aren't created
                 writer.writerows(results_dict)
 
     def _get_model_summary(self, model: tf.keras.Model) -> str:
