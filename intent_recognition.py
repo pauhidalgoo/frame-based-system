@@ -120,11 +120,18 @@ class IntentRecognition:
         if self.save_results != None:
             if self.save_results == "few" and file_path == "./results/complete_results.csv":
                 pass
-            with open(file_path, mode='a', newline='') as file:
+            with open(file_path, mode='a', newline='', encoding="utf-8") as file:
                 writer = csv.DictWriter(file, fieldnames=header if header else results_dict[0].keys())
-                #writer.writeheader() # Uncomment if the files aren't created
+                # writer.writeheader() # Uncomment if the files aren't created
                 writer.writerows(results_dict)
-    
+
+    def _get_model_summary(self, model: tf.keras.Model) -> str:
+        
+        string_list = []
+        model.summary(line_length=80, print_fn=lambda x: string_list.append(x))
+        string_list = [str(a) for a in string_list]
+        return "\n".join(string_list)
+
     def preprocess_data(self):
         """
         Preprocesses the data by tokenizing sentences, sequencing, padding, and encoding labels.
@@ -269,6 +276,7 @@ class IntentRecognition:
             for epoch in range(self.hyperparams['epochs']):
                 epoch_result = {
                     'architecture_name': self.architecture_name,
+                    'summary': self.model.get_config(),
                     'run_number': i + 1,
                     'epoch': epoch + 1,
                     'training_acc': history.history['accuracy'][epoch],
@@ -356,6 +364,7 @@ class IntentRecognition:
         self._save_results(complete_results, './results/complete_results.csv')
         average_metrics = [{
             'architecture_name': self.architecture_name,
+            'summary': self.model.get_config(),
             'average_training_acc': average_training_acc,
             'average_training_f1': average_training_f1,
             'average_training_loss': average_training_loss,
@@ -370,6 +379,7 @@ class IntentRecognition:
 
         best_metrics = [{
             'architecture_name': self.architecture_name,
+            'summary': self.model.get_config(),
             'best_model_training_acc': best_model_training_acc[-1],
             'best_model_training_f1': best_model_training_f1[-1],
             'best_model_validation_acc': best_model_validation_acc[-1],

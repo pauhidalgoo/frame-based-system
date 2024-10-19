@@ -5,11 +5,6 @@
 - Combine with attention
 
 
-- Fix wrong sentences showing
-- Save to CSV results
-- Plot results
-
-
 Notes:
 
 lower doesn't make sense, all sentences are already lower
