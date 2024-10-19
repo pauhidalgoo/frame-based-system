@@ -1,0 +1,1461 @@
+aircraft
+what type of plane is used on a flight from miami to los angeles
+what kinds of aircraft are used by jetblue
+what types of planes does southwest fly
+on the 9 am flight from chicago to houston what type of plane is used
+list aircraft types that fly between denver and seattle
+is there a flight from seattle to portland
+what airplane types fly from san diego to las vegas
+what's the largest plane that flies from san diego to las vegas on seven forty-five
+repeating leaving houston to chicago before 11 am what type of aircraft is used
+what type of plane flies from san diego to las vegas
+what kind of airplane is flight ua 123 from seattle to houston
+what type of plane is an a320
+show me the type of aircraft that ba uses
+what type of aircraft does frontier fly from houston to chicago before 7 pm
+what type of aircraft leaving after 3 pm from seattle to phoenix
+kindly give me the type of aircraft used to fly from houston to chicago
+i'd like to know what type of plane flies from seattle to dallas fort worth after 630
+show me the aircraft that air canada uses
+what kind of aircraft is used on the first class united airlines flight from phoenix to chicago stopping in dallas
+what kind of aircraft does southwest fly before 9 am on july first from seattle to houston
+what kind of airplane goes from phoenix to chicago tuesday stopping in dallas in the morning first class flight
+what type of aircraft is used on united airline flight 456
+i want to go and take a plane in houston and fly to seattle
+show me the aircraft that air canada uses
+what is the type of aircraft for american flight 32
+what aircraft is used on jetblue flight 5432 from orlando to new york city
+what kind of plane flies from seattle to san diego after noon
+display types of aircraft departing from miami to los angeles before noon
+what planes does american use
+what type of aircraft leaves from seattle to portland at 8 am
+what planes are used by spirit
+please inform me the type of aircraft used on a flight from houston to chicago before 1 o'clock noon
+
+quantity
+please tell me how many nonstop flights there are from miami to chicago
+how many flights does united have with a class of service code y
+how many booking options are there
+list the number of flights leaving chicago for denver before 8 am in the morning
+how many american airlines flights leave from los angeles
+how many flights go from miami to houston on august fifteenth
+how many united flights leave from los angeles
+how many flights does american have in first class
+how many stops on delta 2345 from miami to seattle
+how many flights does each airline have with first class service
+how many airlines have flights with service class bn
+how many american airlines flights are there from seattle please
+how many airports does denver have
+how many business class flights does american have today
+how many daily delta flights are there between los angeles and san francisco
+how many business class flights does united have today
+how many flights does each airline have with business class service
+how many delta flights have from miami to chicago
+how many american airlines flights are there to seattle
+list the total number of flights to all airports by united
+how many fares are there one way from seattle to orlando
+how many business class flights does american have leaving from all airports today
+how many flights does each airline have with booking class y
+how many cities are served by united airlines with business class flights
+how many fare codes belong to business class
+how many first class flights does delta airlines have departing from miami today
+how many different service classes are there
+how many nonstop flights going from miami to denver august sixteenth
+how many of united's night flights are business class
+how many delta flights leave chicago june eleventh
+please tell me how many direct flights there are from houston to new york
+how many flights does jetblue have with a class of service code j
+how many seat types are there
+list the number of flights leaving new york for los angeles before 7 am in the morning
+how many southwest flights leave from phoenix
+how many flights go from houston to san diego on september twentieth
+how many jetblue flights leave from phoenix
+how many flights does southwest have in economy class
+how many stops on spirit 1876 from houston to portland
+how many flights does each airline have with economy class service
+how many airlines have flights with service class mn
+how many southwest flights are there from portland please
+how many airports does phoenix have
+how many premium economy flights does southwest have today
+how many daily spirit flights are there between phoenix and los angeles
+how many premium economy flights does jetblue have today
+how many flights does each airline have with premium economy service
+how many spirit flights have from houston to new york
+how many southwest flights are there to portland
+list the total number of flights to all airports by jetblue
+
+flight_time
+what is the arrival time in chicago for the 915 am flight leaving boston
+could you give me the schedule of flights for united and southwest to lga on september tenth
+what times does the early morning flight leave from miami for atlanta
+what is the departure time from london for the 6 pm flight to paris
+what is the arrival time in miami for the 815 am flight leaving chicago
+what are the times that you have planes leaving from miami going to detroit on july eighth
+on delta airlines give me the flight times from atlanta to houston
+what are the schedule of flights from atlanta to miami for august second
+what is the flight schedule of the f29 from detroit to charlotte
+show me times for flights from miami to phoenix
+i would like the time of all flights from miami to detroit on monday
+could you give me the schedule of flights for united and southwest to ord on august sixteenth
+please list the flight times from detroit to philadelphia
+please list the flight times from atlanta to detroit
+please list the flight schedule from charlotte to miami on saturday nights
+what times on thursday could i take a plane from phoenix to los angeles
+please tell me the times of the flights between atlanta and charlotte
+show me times for first class flights between atlanta and charlotte on thursday
+show me the schedule for airlines leaving detroit going to miami for next tuesday
+what is the departure time of the earliest flight of delta airlines from phoenix to atlanta
+please list the flight times from detroit to philadelphia
+what times does american depart from atlanta to miami
+what time does flight ua 512 depart
+please list the flight times from philadelphia to atlanta
+what is the minimum connection time for dallas love field
+now i'd like a schedule for the flights on wednesday morning from los angeles no from houston intercontinental to phoenix
+what is the latest departure time from atlanta to phoenix
+please list the flight times for atlanta to detroit
+show me the flight schedule from detroit to miami
+what time does the wednesday morning 815 flight leaving chicago arrive in miami
+i would like a schedule of flights from miami to atlanta on thursday
+what time are the flights leaving from phoenix to detroit on july eighth
+what is the arrival time in las vegas for the 930 am flight leaving seattle
+what are the times you have planes leaving from las vegas to new york on july ninth
+on jetblue airlines give me the flight times from los angeles to chicago
+what are the schedule of flights from los angeles to las vegas for august third
+what is the flight schedule of the f30 from new york to boston
+show me times for flights from las vegas to denver
+i would like the time of all flights from las vegas to new york on tuesday
+could you give me the schedule of flights for spirit and frontier to lax on august seventeenth
+please list the flight times from new york to san diego
+please list the flight times from los angeles to new york
+please list the flight schedule from boston to las vegas on sunday nights
+what times on friday could i take a plane from denver to portland
+please tell me the times of the flights between los angeles and boston
+show me times for business class flights between los angeles and boston on friday
+show me the schedule for airlines leaving new york going to las vegas for next wednesday
+what is the departure time of the latest flight of jetblue airlines from denver to los angeles
+please list the flight times from new york to san diego
+what times does southwest depart from los angeles to las vegas
+what time does flight aa 623 depart
+please list the flight times from san diego to los angeles
+what is the minimum connection time for chicago o'hare
+now i'd like a schedule for the flights on thursday morning from portland no from dallas fort worth to denver
+
+
+city
+what city is the airport xyz in
+where is xyz
+where is central parkway international located
+where is central parkway international located
+show me the cities served by skybound airlines
+where is maplewood airport
+show me all the cities that northern express serves
+show me the cities served by global airlines international
+is jfk new york
+what time zone is austin in
+show me city served both by skybound airlines and global airlines international
+what cities are served by global airlines international
+which cities does horizon airlines service
+what cities does pioneer airlines service
+what are the cities that eagle airlines serves
+what are the cities served by sunrise airlines
+what city is the airport abc in
+where is abc
+where is riverview international located
+where is riverview international located
+show me the cities served by zenith airlines
+where is pinewood airport
+show me all the cities that southern express serves
+show me the cities served by transcontinental airlines international
+is ord chicago
+what time zone is phoenix in
+show me city served both by zenith airlines and transcontinental airlines international
+what cities are served by transcontinental airlines international
+which cities does summit airlines service
+what cities does voyager airlines service
+what are the cities that falcon airlines serves
+what are the cities served by sunset airlines
+where is oakwood airport
+what city is the airport pqr in
+what city is the airport jfk in
+where is jfk
+where is logan international located
+where is miami international located
+show me the cities served by skybound airlines
+where is o'hare airport
+show me all the cities that phoenix air serves
+show me the cities served by global airlines
+is lax los angeles
+what time zone is chicago in
+show me city served both by skybound airlines and global airlines
+what cities are served by global airlines
+which cities does spirit airlines service
+what cities does frontier airlines service
+what are the cities that southwest airlines serves
+what are the cities served by jetblue airlines
+what city is the airport ord in
+where is ord
+where is dallas-fort worth international located
+where is hartsfield-jackson atlanta international located
+show me the cities served by eagle airlines
+where is mccarran international airport
+show me all the cities that red arrow airlines serves
+show me the cities served by blue sky airlines
+is sfo san francisco
+what time zone is seattle in
+show me city served both by eagle airlines and blue sky airlines
+what cities are served by blue sky airlines
+which cities does alaska airlines service
+what cities does allegiant air service
+what are the cities that hawaiian airlines serves
+what are the cities served by sun country airlines
+what city is the airport den in
+where is den
+where is philadelphia international airport located
+where is george bush intercontinental airport located
+show me the cities served by horizon air
+where is san diego international airport
+show me all the cities that air wisconsin serves
+show me the cities served by compass airlines
+is mia miami
+what time zone is phoenix in
+show me city served both by horizon air and compass airlines
+what cities are served by compass airlines
+which cities does southwest airlines service
+what cities does jetblue service
+what are the cities that frontier airlines serves
+what are the cities served by spirit airlines
+what city is the airport atl in
+where is atl
+
+ground_fare
+how much does the limo service cost in miami
+how much does it cost to rent a car in seattle
+what are the costs of car rental in houston
+how much does it cost to get downtown from the chicago airport by limo
+what are the rental car rates in los angeles
+what is the cost of the air taxi operation at denver international airport
+how much is a limousine between chicago o'hare international airport and chicago
+what price is a limousine service in san diego
+how much would car rental cost in phoenix
+can you list costs of austin rental cars
+how much is the ground transportation between denver and downtown
+what are the rental car rates in austin
+what price is a limousine service to los angeles international airport
+how expensive is the miami limousine service
+what is the cost of limousine service in san diego
+how much does a limousine cost from the airport to downtown phoenix
+what are the rates for rental cars in seattle
+how much is a taxi from the airport to downtown houston
+what's the price of a limo service in chicago
+how much does it cost to rent a car at the orlando airport
+what are the costs of renting a car in miami
+how much does it cost to get from the airport to downtown los angeles by limo
+what is the cost of a car rental in san francisco
+how much is a limo from the airport to downtown denver
+what are the rates for limousine services in boston
+how much does it cost to rent a car in atlanta for a week
+what is the cost of an airport shuttle in dallas
+how much is a taxi from downtown to the airport in san diego
+what's the price range for rental cars in phoenix
+how much does a limo cost in austin
+what's the cost of ground transportation from the airport to downtown miami
+what are the rates for car rentals near the denver airport
+how much does a limo service to new york city cost
+how expensive is a limo service in san francisco
+what's the cost of a limo from downtown chicago to the airport
+how much does it cost to rent a car for a day in los angeles
+what are the cheapest rental car options in houston
+how much does an airport transfer cost in atlanta
+what's the price of a limo in boston
+how much would it cost to rent a car in dallas for the weekend
+can you give me the costs for renting a car in denver
+how much is the transportation from the airport to downtown phoenix
+what are the average car rental rates in austin
+how much does a limo service from laguardia to manhattan cost
+how expensive are limos in miami
+what is the cost for a limo service in philadelphia
+how much does a car rental cost in san francisco for a week
+what are the rates for renting a car in seattle downtown
+how much is a taxi from the houston airport to the city center
+what's the price of a limo service from the chicago airport
+how much does it cost to rent an economy car in orlando
+what are the rental car prices in miami beach
+how much is a limo from lax to downtown los angeles
+what is the price for a rental car in san diego
+how much is a limo from denver international airport to downtown
+what are the rates for a limo service in new york city
+how much does it cost to rent a compact car in atlanta
+what is the cost of an airport shuttle in dallas fort worth
+how much does a taxi cost from downtown san diego to the airport
+what are the price ranges for car rentals in phoenix airport
+how much is a limousine service in austin texas
+what's the average cost for ground transportation from miami airport to downtown
+what are the rental car rates near denver international airport
+what's the price for a limo to jfk airport
+how much does a limo cost in san francisco per hour
+what is the cost of a limo ride from downtown chicago to o'hare
+how much does it cost to rent a mid-size car in los angeles
+what's the cheapest car rental option in houston texas
+what's the typical cost for airport transportation in atlanta
+how much does a limo service cost in boston for a wedding
+how much does it cost to rent an suv in dallas
+what are the price ranges for denver rental cars
+how much is the ground transportation from phoenix airport to Scottsdale
+what are the typical rental car rates in austin for a weekend
+how much does a limo from laguardia to times square cost
+how expensive is a limo service in south beach miami
+what is the starting price for a limo service in philadelphia
+what are the car rental rates in san francisco international airport
+how much does it cost to rent a minivan in seattle
+how much does a taxi ride from houston hobby airport to downtown cost
+what is the price for a limo from midway airport to downtown chicago
+how much does it cost to rent a luxury car in orlando
+what are the best rental car deals in miami
+how much is a limo ride from lax to hollywood
+what is the average cost for a rental car in san diego for a day
+
+distance
+how far is it from chicago airport to chicago
+what is the distance from houston international airport to houston
+tell me distance from miami airport to the city
+how far is downtown from the airport in san diego
+how long does it take to get from phoenix airport into the city of phoenix
+how long does it take to get from detroit to cleveland
+what is the distance between seattle airport and downtown seattle
+how long does it take to fly from portland to san antonio
+how far is the airport from austin
+what is the distance from john f. kennedy airport to new york city's downtown
+how far from the airport in the philadelphia international airport is philadelphia
+how far is the airport from downtown seattle
+how far is it from memphis airport to memphis
+how long does it take to get from baltimore to charlotte
+what is the distance from denver international airport to denver
+how far is it from las vegas airport to las vegas
+what is the distance from san antonio international airport to san antonio
+tell me distance from dallas airport to the city
+how far is downtown from the airport in orlando
+how long does it take to get from los angeles airport into the city of los angeles
+how long does it take to get from milwaukee to minneapolis
+what is the distance between boston airport and downtown boston
+how long does it take to fly from san francisco to chicago
+how far is the airport from new orleans
+what is the distance from miami international airport to miami's downtown
+how far from the airport in the atlanta international airport is atlanta
+how far is the airport from downtown boston
+how far is it from portland airport to portland
+how long does it take to get from seattle to san diego
+what is the distance from phoenix international airport to phoenix
+how far is it from san diego airport to san diego
+what is the distance from detroit international airport to detroit
+tell me distance from houston airport to the city
+how far is downtown from the airport in austin
+how long does it take to get from san francisco airport into the city of san francisco
+how long does it take to get from indianapolis to columbus
+what is the distance between new orleans airport and downtown new orleans
+how long does it take to fly from los angeles to new york city
+how far is the airport from denver
+what is the distance from dallas-fort worth international airport to dallas's downtown
+how far from the airport in the houston international airport is houston
+how far is the airport from downtown new orleans
+how far is it from charlotte airport to charlotte
+how long does it take to get from las vegas to san francisco
+what is the distance from austin international airport to austin
+how far is it from philadelphia airport to philadelphia
+what is the distance from cleveland international airport to cleveland
+tell me distance from san diego airport to the city
+how far is downtown from the airport in miami
+how long does it take to get from denver airport into the city of denver
+how long does it take to get from nashville to memphis
+what is the distance between san antonio airport and downtown san antonio
+how long does it take to fly from dallas to miami
+how far is the airport from phoenix
+what is the distance from orlando international airport to orlando's downtown
+how far from the airport in the chicago o'hare international airport is chicago
+how far is the airport from downtown san antonio
+how far is it from indianapolis airport to indianapolis
+how long does it take to get from philadelphia to boston
+what is the distance from seattle-tacoma international airport to seattle
+how far is it from baltimore airport to baltimore
+what is the distance from atlanta international airport to atlanta
+tell me distance from boston airport to the city
+how far is downtown from the airport in las vegas
+how long does it take to get from chicago airport into the city of chicago
+how long does it take to get from albuquerque to tucson
+what is the distance between dallas airport and downtown dallas
+how long does it take to fly from seattle to atlanta
+how far is the airport from san antonio
+what is the distance from denver international airport to denver's downtown
+how far from the airport in the san diego international airport is san diego
+how far is the airport from downtown dallas
+how far is it from milwaukee airport to milwaukee
+how long does it take to get from new orleans to houston
+what is the distance from miami international airport to miami
+how far is it from cincinnati airport to cincinnati
+what is the distance from minneapolis-st. paul international airport to minneapolis
+tell me distance from los angeles airport to the city
+how far is downtown from the airport in phoenix
+how long does it take to get from seattle airport into the city of seattle
+how long does it take to get from oklahoma city to omaha
+what is the distance between los angeles airport and downtown los angeles
+how long does it take to fly from phoenix to chicago
+how far is the airport from los angeles
+what is the distance from boston logan international airport to boston's downtown
+
+flight+airfare
+show me the flights and fares on january fifth from chicago to miami
+all flights and fares from houston to denver round trip after 3 pm less than 800 dollars
+first flights and fares from detroit to houston on a tuesday
+all flights and fares from san antonio to phoenix round trip after 9 am less than 950 dollars
+all flights and fares from boston to seattle round trip after 6 pm less than 1200 dollars
+give me the flights and fares on november eighteenth from san diego to new york
+show all flights and fares from portland to los angeles
+show me all flights and fares from phoenix to chicago
+all flights and fares from dallas to miami round trip after 10 am less than 700 dollars
+i want a one way flight from los angeles to boston, what are the cheapest fares?
+show all flights and fares from san francisco to new york
+all flights and fares from seattle to chicago round trip after 1 pm less than 1000 dollars
+all flights and fares from miami to detroit on delta number 527 on a wednesday
+flights and fares from phoenix to san diego
+what are the flights and fares from houston to new orleans
+list flights and fares on march tenth from chicago to los angeles
+all flights and fares from new york to miami round trip after 7 pm less than 650 dollars
+earliest flights and fares from boston to denver on a saturday
+all flights and fares from los angeles to san francisco round trip after 11 am less than 500 dollars
+all flights and fares from san diego to portland round trip after 8 pm less than 1300 dollars
+give me the flights and fares on february twelfth from detroit to orlando
+show all flights and fares from seattle to miami
+show me all flights and fares from new orleans to houston
+all flights and fares from phoenix to dallas round trip after 2 pm less than 850 dollars
+i want to book a one way flight from chicago to atlanta, what are the fares?
+show all flights and fares from miami to los angeles
+all flights and fares from denver to boston round trip after 4 pm less than 1150 dollars
+all flights and fares from new york to san diego on american number 219 on a monday
+flights and fares from los angeles to portland
+what are the flights and fares from san francisco to new orleans
+find flights and fares on july seventh from boston to miami
+all flights and fares from denver to houston round trip after 12 pm less than 750 dollars
+cheapest flights and fares from new york to denver on a friday
+all flights and fares from chicago to seattle round trip after 9 am less than 1050 dollars
+all flights and fares from portland to san diego round trip after 5 pm less than 1250 dollars
+give me the flights and fares on april nineteenth from miami to orlando
+show all flights and fares from los angeles to new york
+show me all flights and fares from houston to chicago
+all flights and fares from san francisco to dallas round trip after 3 pm less than 900 dollars
+i need a one way flight from denver to atlanta, tell me the fares.
+show all flights and fares from new york to los angeles
+all flights and fares from seattle to boston round trip after 6 pm less than 1100 dollars
+all flights and fares from orlando to detroit on united number 842 on a thursday
+flights and fares from miami to portland
+what are the flights and fares from dallas to new orleans
+give me flights and fares on august third from chicago to los angeles
+all flights and fares from new york to miami round trip after 10 pm less than 600 dollars
+first available flights and fares from boston to denver on a sunday
+all flights and fares from los angeles to san francisco round trip after 1 pm less than 450 dollars
+all flights and fares from san diego to portland round trip after 7 pm less than 1350 dollars
+i want the flights and fares on october twenty-sixth from detroit to orlando
+show all flights and fares from seattle to miami
+show me all flights from new orleans to houston and their fares
+all flights and fares from phoenix to dallas round trip after 5 pm less than 800 dollars
+one way flight from chicago to atlanta, what are the fares?
+display all flights and fares from miami to los angeles
+all flights and fares from denver to boston round trip after 7 pm less than 1200 dollars
+all flights and fares from new york to san diego on jetblue number 375 on a tuesday
+flights and fares from los angeles to portland please
+what are the flights and fares from san francisco to new orleans?
+i need flights and fares on june first from boston to miami
+all flights and fares from denver to houston round trip after 2 pm less than 700 dollars
+cheapest flights and fares from new york to denver for a saturday
+all flights and fares from chicago to seattle round trip after 11 am less than 1000 dollars
+all flights and fares from portland to san diego round trip after 8 pm less than 1200 dollars
+give me the flights and fares on september fourteenth from miami to orlando
+show all flights and fares from los angeles to new york please
+show me all the flights and fares from houston to chicago
+all flights and fares from san francisco to dallas round trip after 6 pm less than 850 dollars
+one way flight denver to atlanta, fares?
+show all flights and their fares from new york to los angeles
+all flights and fares seattle to boston round trip after 9 pm less than 1050 dollars
+all flights and fares orlando to detroit on southwest number 129 on a friday
+miami to portland flights and fares
+dallas to new orleans flights and fares please
+flights and fares for may ninth from chicago to los angeles
+new york to miami round trip after 12 am less than 550 dollars, all flights and fares
+earliest flights and fares from boston to denver next monday
+all flights and fares los angeles to san francisco round trip after 4 pm less than 400 dollars
+san diego to portland round trip after 10 pm less than 1300 dollars, all flights and fares
+flights and fares on november first from detroit to orlando please
+seattle to miami, show all flights and fares
+show me all flights and fares between new orleans and houston
+phoenix to dallas round trip after 8 pm less than 750 dollars, all flights and fares
+one way chicago to atlanta, need the fares
+
+airport
+what's the airport at san diego
+give me a list of airports in seattle
+miami airports
+please list information regarding los angeles airport
+what's the name of the chicago airport
+describe dallas airport
+what are the major airports near atlanta
+what is the name of the airport in boston
+airports in san jose
+does the boston airport have a name
+what is the name of the airport at chicago
+what airport is at phoenix
+please show me all airports in chicago
+airports in austin
+what's the airport at portland
+give me a list of airports in detroit
+charlotte airports
+please list information regarding las vegas airport
+what's the name of the minneapolis airport
+describe new orleans airport
+list all airports located in or near san antonio
+what is the name of the airport in washington dc
+airports in memphis
+does the washington dc airport have a name
+what is the name of the airport at minneapolis
+what airport is at indianapolis
+please show me all airports in minneapolis
+airports in milwaukee
+what's the airport at albuquerque
+give me a list of airports in jacksonville
+columbus airports
+please list information regarding san juan airport
+what's the name of the oklahoma city airport
+describe raleigh airport
+tell me about the airports serving the kansas city area
+what is the name of the airport in richmond
+airports in omaha
+does the richmond airport have a name
+what is the name of the airport at oklahoma city
+what airport is at tulsa
+please show me all airports in oklahoma city
+airports in long beach
+what's the airport at reno
+give me a list of airports in fresno
+buffalo airports
+please list information regarding honolulu airport
+what's the name of the el paso airport
+describe boise airport
+what are the closest airports to santa fe
+what is the name of the airport in burlington
+airports in anchorage
+does the burlington airport have a name
+what is the name of the airport at el paso
+what airport is at spokane
+please show me all airports in el paso
+airports in des moines
+what's the airport at baton rouge
+give me a list of airports in modesto
+providence airports
+please list information regarding san jose, costa rica airport
+what's the name of the wichita airport
+describe little rock airport
+find airports near grand rapids
+what is the name of the airport in lexington
+airports in augusta
+does the lexington airport have a name
+what is the name of the airport at wichita
+what airport is at charleston
+please show me all airports in wichita
+airports in stockton
+what's the airport at huntington
+give me a list of airports in mobile
+knoxville airports
+please list information regarding guadalajara airport
+what's the name of the shreveport airport
+describe green bay airport
+information about airports serving the rochester area
+what is the name of the airport in erie
+airports in yonkers
+does the erie airport have a name
+what is the name of the airport at shreveport
+what airport is at spartanburg
+please show me all airports in shreveport
+airports in boulder
+airport information for montgomery
+tell me about the airports near scranton
+
+capacity
+how many seats in a 320
+how many passengers fit on a a330
+how many seats in a 757
+what is the total seating capacity of all aircraft of united airlines
+what's the capacity of an e190
+what are the seating capacities of planes between chicago and denver
+list number of people that can be carried on each type of plane that flies between chicago and denver
+how many people fit on a 767
+how many people fit on a 777 airplane
+what is the seating capacity of a boeing 787
+what's the capacity of a crj200
+what is the seating capacity for the e175
+how many people fly on a regional jet
+how many seats does a 747 have
+how many passengers can a a380 hold
+how many seats are in a embraer 190
+what is the total seating capacity of delta airlines
+what's the typical capacity of an a321
+what are the seating capacities of aircraft flying between los angeles and new york
+list the number of passengers each plane type can carry between los angeles and new york
+how many people fit on an a350
+how many people fit on a 737-800 airplane
+what is the seating capacity of a airbus a340
+what's the capacity of a 787-9
+what is the seating capacity for the crj700
+how many people typically fly on a wide-body aircraft
+how many seats in a 319
+how many passengers fit on a a319
+how many seats in a 737
+what is the total seating capacity of all aircraft of southwest airlines
+what's the capacity of an e170
+what are the seating capacities of planes between dallas and houston
+list number of people that can be carried on each type of plane that flies between dallas and houston
+how many people fit on a 717
+how many people fit on a a380 airplane
+what is the seating capacity of a boeing 777
+what's the capacity of a crj900
+what is the seating capacity for the atr 72
+how many people fly on a narrow-body jet
+how many seats does a a340 have
+how many passengers can a 747-8 hold
+how many seats are in a embraer 175
+what is the total seating capacity of jetblue airways
+what's the typical capacity of an a220
+what are the seating capacities of aircraft flying between san francisco and seattle
+list the number of passengers each plane type can carry between san francisco and seattle
+how many people fit on an a321neo
+how many people fit on a 737-900er airplane
+what is the seating capacity of a airbus a350-1000
+what's the capacity of a 777-300er
+what is the seating capacity for the q400
+how many people typically fly on a single-aisle aircraft
+how many seats in an a318
+how many passengers fit on an a310
+how many seats in a 787-10
+what is the total seating capacity of spirit airlines
+what's the capacity of a atr 42
+what are the seating capacities of planes between miami and atlanta
+list number of people that can be carried on each type of plane that flies between miami and atlanta
+how many people fit on a 737 max
+how many people fit on a 777x airplane
+what is the seating capacity of a boeing 747-400
+what's the capacity of a q200
+what is the seating capacity for the erj-145
+how many people fly on a twin-engine jet
+how many seats does an md-80 have
+how many passengers can a dc-10 hold
+how many seats are in a cessna caravan
+what is the total seating capacity of frontier airlines
+what's the typical capacity of an il-96
+what are the seating capacities of aircraft flying between phoenix and las vegas
+list the number of passengers each plane type can carry between phoenix and las vegas
+how many people fit on an antonov an-225
+how many people fit on a 737 max 10 airplane
+what is the seating capacity of a airbus a300
+what's the capacity of a 767-400er
+what is the seating capacity for the erj-170
+how many people typically fly on a jumbo jet
+how many seats on a 747sp
+how many passengers fit on a dc-9
+how many seats on a 737 max 7
+what’s the total seating capacity of alaska airlines
+what's the capacity of an l-1011
+what are the seating capacities between boston and philadelphia
+list the passenger capacity of each aircraft type flying between boston and philadelphia
+how many fit on a 737 max 8
+how many fit on a 737 max 9 airplane
+
+flight_no
+flight numbers from denver to atlanta tomorrow
+i'm looking for the flight number of a flight from seattle to miami on delta and it departs around 6 am
+flight numbers from phoenix to san diego on july eighteenth
+please tell me the return flight number from chicago to los angeles
+what is the flight number for the united flight which leaves houston at 9:30 am and goes to new york
+what is the number of business class flights on southwest airlines
+may i have a list of flight numbers from austin texas to portland oregon on wednesday
+list the number of flights departing from san francisco to las vegas after 3 pm
+i would like the flight number and the time for the cheapest economy fare from los angeles to new york leaving before 7 am tuesday morning
+which is the flight number for the jetblue flight from new york to orlando is it 456 or is it 987654
+what is the flight number of the latest flight between chicago and dallas
+flight numbers from miami to chicago next week
+i need to know the flight number from a flight from las vegas to new orleans on spirit airlines arriving around 8 pm
+flight numbers from dallas to houston on august tenth
+please provide the return flight number from atlanta to denver
+what is the flight number for the alaska airlines flight which leaves seattle at 11:45 am and goes to san francisco
+what is the number of premium economy flights on american airlines
+may i have a listing of flight numbers from phoenix arizona to san diego california on thursday
+list the number of flights arriving in new york city from los angeles before 10 am
+i would like the flight number and the time for the most expensive business class fare from chicago to miami leaving after 9 pm wednesday night
+which is the flight number for the frontier flight from denver to las vegas is it 123 or is it 789012
+what is the flight number of the shortest flight between houston and dallas
+flight numbers from san francisco to los angeles this weekend
+i want to find the flight number of a flight from new york to boston on delta airlines departing around noon
+flight numbers from atlanta to miami on september fifth
+please give me the return flight number from los angeles to chicago
+what is the flight number for the southwest flight which leaves phoenix at 1:15 pm and goes to denver
+what is the number of first class flights on united airlines
+may i have a list of flight numbers from dallas texas to houston texas on friday
+list the number of flights departing from chicago to new york after 6 pm
+i would like the flight number and the time for the cheapest premium economy fare from san francisco to seattle leaving before 6 am thursday morning
+which is the flight number for the spirit airlines flight from las vegas to los angeles is it 789 or is it 456789
+what is the flight number of the longest flight between los angeles and new york
+flight numbers from boston to new york today
+i am trying to find the flight number from a flight from miami to atlanta on american airlines arriving around 7 pm
+flight numbers from houston to dallas on october twelfth
+please show me the return flight number from new york to san francisco
+what is the flight number for the jetblue flight which leaves boston at 10:00 am and goes to orlando
+what is the number of business class flights on delta airlines
+may i have a listing of flight numbers from los angeles california to san francisco california on saturday
+list the number of flights arriving in dallas from houston before noon
+i would like the flight number and the time for the most expensive first class fare from new york to los angeles leaving after 10 pm friday night
+which is the flight number for the united airlines flight from chicago to denver is it 456 or is it 123456
+what is the flight number of the earliest flight between san francisco and seattle
+flight numbers from new york to chicago tomorrow morning
+i'm searching for the flight number of a flight from los angeles to san francisco on southwest airlines departing around 3 pm
+flight numbers from san diego to phoenix on november fifteenth
+please tell me the one-way flight number from chicago to miami
+what is the flight number for the alaska airlines flight which leaves san francisco at 8:30 am and goes to seattle
+what is the number of economy flights on american airlines
+may i have a list of flight numbers from houston texas to dallas texas on sunday
+list the number of flights departing from los angeles to new york after 9 pm
+i would like the flight number and the time for the cheapest business class fare from chicago to los angeles leaving before 5 am monday morning
+which is the flight number for the delta airlines flight from atlanta to miami is it 789 or is it 789123
+what is the flight number of the latest flight between denver and phoenix
+flight numbers from chicago to miami next thursday
+i need the flight number for a flight from san francisco to los angeles on united airlines arriving around 6 pm
+flight numbers from dallas to austin on december twentieth
+please provide me the return flight number from miami to chicago
+what is the flight number for the southwest flight which leaves denver at 2:45 pm and goes to phoenix
+what is the number of first class flights on delta airlines
+may i have a listing of flight numbers from san francisco california to los angeles california on tuesday
+list the number of flights arriving in new york from boston before 11 am
+i would like the flight number and the time for the most expensive premium economy fare from los angeles to san francisco leaving after 11 pm wednesday night
+which is the flight number for the american airlines flight from miami to atlanta is it 123 or is it 456789
+what is the flight number of the shortest flight between phoenix and san diego
+flight numbers from los angeles to new york this saturday
+i'm trying to get the flight number from a flight from new york to boston on jetblue departing around midnight
+flight numbers from miami to orlando on january twenty-fifth
+please give me the one-way flight number from san francisco to los angeles
+what is the flight number for the united flight which leaves seattle at 7:15 am and goes to san francisco
+what is the number of economy plus flights on united airlines
+may i have a list of flight numbers from chicago illinois to new york new york on wednesday
+list the number of flights departing from san francisco to las vegas after midnight
+i would like the flight number and the time for the cheapest first class fare from new york to chicago leaving before 4 am thursday morning
+which is the flight number for the jetblue flight from boston to new york is it 987 or is it 654321
+what is the flight number of the earliest flight between los angeles and san diego
+flight numbers from atlanta to dallas this sunday
+i am searching for the flight number from a flight from orlando to miami on spirit airlines arriving around 9 pm
+flight numbers from houston to san antonio on february eighth
+please show me the return flight number from los angeles to new york city
+what is the flight number for the delta flight which leaves new york at 11:30 am and goes to atlanta
+what is the number of business class flights on jetblue
+may i have a listing of flight numbers from dallas texas to fort worth texas on friday
+list the number of flights departing from chicago to miami after 7 pm
+i would like the flight number and the time for the cheapest premium economy fare from san francisco to denver leaving before 3 am saturday morning
+which is the flight number for the frontier flight from denver to las vegas is it 321 or is it 987654
+what is the flight number of the longest flight between seattle and san francisco
+flight numbers from new orleans to las vegas next monday
+
+meal
+show me all meals on flights from miami to chicago
+is there a meal on united flight 395 from denver to los angeles
+what are all the available meals
+list all meals served on flights from boston to phoenix
+does southwest flight 622 from houston to las vegas offer a meal
+tell me about the meals on flights from seattle to new york
+what kind of meals are served on american airlines flight 128 from philadelphia to orlando
+are meals provided on jetblue flight 947 from new orleans to san diego
+show me the meal options on flights from portland to minneapolis
+what meals are available on frontier flight 413 from charlotte to salt lake city
+are there any meals on spirit flight 289 from atlanta to tampa
+list the meals offered on delta flight 755 from detroit to san antonio
+what are the meal choices on flights from milwaukee to jacksonville
+is there a meal service on alaska airlines flight 501 from san jose to kansas city
+show me the menu for flights from raleigh to nashville
+what food is offered on southwest flight 317 from indianapolis to austin
+are there meals on jetblue flight 264 from columbus to fort lauderdale
+list the available meals on flights from sacramento to albuquerque
+what are the meal options on american airlines flight 882 from cleveland to memphis
+is a meal included on frontier flight 198 from oklahoma city to birmingham
+show me the meals served on spirit flight 645 from las vegas to reno
+what kind of food is available on delta flight 329 from buffalo to west palm beach
+are there any meals on united flight 471 from richmond to newark
+list all meal options for flights from hartford to san juan
+what meals are offered on alaska airlines flight 912 from anchorage to honolulu
+is there food service on southwest flight 783 from baltimore to jackson
+show me the menu for jetblue flight 528 from providence to burlington
+what are the meal choices on american airlines flight 216 from pittsburgh to mobile
+are meals provided on frontier flight 831 from des moines to grand rapids
+list the available meals on spirit flight 499 from san francisco to boise
+what are the food options on delta flight 614 from rochester to charleston
+is a meal included on united flight 157 from tulsa to montgomery
+show me all meals available on flights from spokane to savannah
+what kind of meals are served on alaska airlines flight 302 from fresno to little rock
+are there any meal options on southwest flight 965 from el paso to baton rouge
+list all meals for flights from reno to wichita
+what food is offered on jetblue flight 123 from boise to sioux falls
+are meals included on american airlines flight 456 from greensboro to columbia
+show me the menu for frontier flight 789 from madison to fargo
+what are the meal choices on spirit flight 321 from albany to augusta
+is food service available on delta flight 543 from syracuse to shreveport
+list the meal options for united flight 287 from knoxville to chattanooga
+what meals are provided on alaska airlines flight 678 from eugene to asheville
+are there any food options on southwest flight 891 from springfield to wilmington
+show me all available meals for flights from modesto to yakima
+what kind of food is served on jetblue flight 234 from santa barbara to boulder
+are any meals included on american airlines flight 567 from salinas to billings
+list all meals for flights from redding to bismarck
+what food is offered on frontier flight 890 from visalia to rapid city
+are meals provided on spirit flight 123 from yuma to flagstaff
+show me the menu for delta flight 456 from bakersfield to pueblo
+what are the meal choices on united flight 789 from chico to gallup
+is food service offered on alaska airlines flight 321 from hanford to twin falls
+list all meal options for southwest flight 654 from lompoc to great falls
+what meals are available on jetblue flight 987 from santa maria to missoula
+are any food choices offered on american airlines flight 210 from san luis obispo to helena
+show me all meals for flights from ventura to bozeman
+what kind of food is served on frontier flight 345 from santa cruz to butte
+are any meals included on spirit flight 678 from watsonville to kalispell
+list the meal options for delta flight 901 from monterey to havre
+what food choices are available on united flight 234 from king city to anaconda
+is any food service provided on alaska airlines flight 567 from marina to miles city
+show me the menu for southwest flight 890 from seaside to livingston
+what meals are offered on jetblue flight 123 from crescent city to whitefish
+are any food options available on american airlines flight 456 from arcata to sidney
+list all meals for flights from eureka to glendive
+what kind of food is served on frontier flight 789 from fort bragg to lewiston
+are meals included on spirit flight 321 from ukiah to cut bank
+show me the menu for delta flight 654 from lakeport to shelby
+what are the meal choices on united flight 987 from clearlake to polson
+is food service offered on alaska airlines flight 210 from willows to ronan
+list the meal options for southwest flight 345 from talkeetna to thompson falls
+what meals are available on jetblue flight 678 from homer to superior
+are there food choices on american airlines flight 901 from kenai to colstrip
+show me all meals on flights from seward to forsyth
+what kind of food is available on frontier flight 234 from valdez to hardin
+are there meals on spirit flight 567 from cordova to roundup
+list the available meals on delta flight 890 from kodiak to malta
+what food choices are offered on united flight 123 from dutch harbor to scobey
+is food service available on alaska airlines flight 456 from nome to plentywood
+show me all meals on southwest flights from bethel to wolf point
+what kind of food is served on jetblue flights from kotzebue to chinook
+are meals included on american airlines flights from barrow to jordan
+list the meal options on frontier flights from galena to harlowton
+what meals are available on spirit flights from unalakleet to winifred
+are food choices offered on delta flights from st. mary's to three rivers
+show me the meal options on united flights from king salmon to winnett
+what kind of food is available on alaska airlines flights from dillingham to joliet
+are meals included on southwest flights from naknek to red lodge
+list all meal options on jetblue flights from sand point to west yellowstone
+what meals are offered on american airlines flights from cold bay to cooke city
+are there food choices on frontier flights from adak to gardiner
+show me the menu for spirit flights from akutan to virginia city
+what kind of food is served on delta flights from false pass to wisconsin dells
+are meals available on united flights from king cove to lake geneva
+list the food choices on alaska airlines flights from perryville to eagle river
+what meals are offered on southwest flights from ivanof bay to minocqua
+
+restriction
+what are the baggage restrictions on flights from london to paris for the airfare of 350 euros?
+what is restriction ba22?
+what are the pet restrictions on flights from tokyo to seoul for the airfare of 600 dollars?
+what is restriction ke15?
+what are the carry-on restrictions on flights from new york to los angeles for the airfare of 200 dollars?
+what is restriction aa77?
+what are the seating restrictions on flights from chicago to miami for the airfare of 150 dollars?
+what is restriction ua99?
+what are the luggage restrictions on flights from san francisco to denver for the airfare of 250 dollars?
+what is restriction wn33?
+what are the infant restrictions on flights from rome to madrid for the airfare of 100 euros?
+what is restriction ib88?
+what are the child restrictions on flights from berlin to amsterdam for the airfare of 75 euros?
+what is restriction kl66?
+what are the senior restrictions on flights from dubai to abu dhabi for the airfare of 50 dirhams?
+what is restriction ey44?
+what are the military restrictions on flights from washington to san diego for the airfare of 300 dollars?
+what is restriction as22?
+what are the student restrictions on flights from boston to philadelphia for the airfare of 125 dollars?
+what is restriction am55?
+what are the baggage allowance restrictions for boeing 747 flights from dallas to houston?
+what is restriction sw11?
+what are the carry-on size restrictions for airbus a380 flights from singapore to hong kong?
+what is restriction sq00?
+what are the pet carrier restrictions for embraer 190 flights from rio de janeiro to sao paulo?
+what is restriction tam99?
+what are the liquid restrictions on flights from lisbon to porto for the airfare of 60 euros?
+what is restriction tp44?
+what are the electronic device restrictions on flights from istanbul to ankara for the airfare of 80 lira?
+what is restriction tk22?
+what are the sporting equipment restrictions on flights from sydney to melbourne for the airfare of 150 dollars?
+what is restriction qf66?
+what are the musical instrument restrictions on flights from vancouver to toronto for the airfare of 200 dollars?
+what is restriction ac88?
+what are the oversized baggage restrictions for cessna 172 flights from smallville to metropolis?
+what is restriction sv00?
+what are the hazardous material restrictions on flights from gotham city to central city for the airfare of 500 dollars?
+what is restriction gc11?
+what are the food and beverage restrictions on flights from moscow to st. petersburg for the airfare of 100 rubles?
+what is restriction su55?
+what are the weight restrictions on airbus a330 flights from frankfurt to munich?
+what is restriction lh77?
+what are the size restrictions on boeing 777 flights from london to dubai?
+what is restriction ek33?
+what are the number of bags restrictions on embraer 175 flights from miami to atlanta?
+what is restriction dl00?
+what are the type of bag restrictions on cessna citation x flights from new york to london?
+what is restriction cx22?
+what are the air restrictions on flights from denver to phoenix for the airfare of 180 dollars?
+what is restriction f9?
+what are the air restrictions for a boeing 787 flight from chicago to london?
+what is restriction ba2468?
+what are the air restrictions on flights from miami to san juan for 250 dollars on a airbus a320?
+what is restriction b61357?
+what are the air restrictions on private jet flights from los angeles to las vegas for 1000 dollars?
+what is restriction lvj999?
+what are the air restrictions on helicopter flights from new york city to JFK airport for 150 dollars?
+what is restriction nyc2jfk?
+what are the air restrictions on seaplane flights from seattle to victoria for 200 dollars?
+what is restriction seavic?
+what are the air restrictions on hot air balloon flights over cappadocia for 500 dollars?
+what is restriction cappadocia?
+what are the air restrictions on blimp flights over the grand canyon for 1000 dollars?
+what is restriction grandcanyon?
+what are the air restrictions for glider flights over the alps for 750 dollars?
+what is restriction alpsglider?
+what are the air restrictions for paragliding flights over the himalayas for 1500 dollars?
+what is restriction himalayas?
+what are the baggage restrictions for a first class flight from paris to tokyo?
+what is restriction af123?
+what are the pet restrictions for a business class flight from london to new york?
+what is restriction ba246?
+what are the carry-on restrictions for an economy class flight from sydney to los angeles?
+what is restriction qf12?
+what are the seating restrictions for a premium economy flight from singapore to san francisco?
+what is restriction sq34?
+what are the luggage restrictions for a budget airline flight from bangkok to kuala lumpur?
+what is restriction airasia?
+what are the infant restrictions for a flight with a bassinet from dubai to london?
+what is restriction ek007?
+what are the child restrictions for a flight with unaccompanied minor service from new york to london?
+what is restriction ua987?
+what are the senior restrictions for a flight with wheelchair assistance from chicago to miami?
+what is restriction aa1234?
+what are the military restrictions for a flight with special baggage allowance from washington d.c. to san diego?
+what is restriction as5678?
+what are the student restrictions for a flight with discounted fare from boston to london?
+what is restriction ba001?
+what are the air restrictions for flights from berlin to madrid with a layover in paris?
+what is restriction iberia?
+what are the air restrictions for flights from rome to london with a connection in amsterdam?
+what is restriction klm?
+what are the air restrictions for flights from tokyo to san francisco with a stopover in honolulu?
+what is restriction united?
+what are the air restrictions for flights from sydney to new york with a transfer in los angeles?
+what is restriction qantas?
+what are the air restrictions on flights from london to sydney for 700 pounds on a boeing 747?
+what is restriction ba002?
+
+airline+flight_no
+airline and flight number from san francisco to denver please.
+could you tell me the airline and flight number for a flight from london to paris?
+i need the airline and flight number from chicago to miami.
+what's the airline and flight number for flights from dallas to austin?
+airline and flight number for a flight from los angeles to seattle.
+i'd like the airline and flight number from boston to atlanta.
+please provide the airline and flight number from phoenix to las vegas.
+what are the airline and flight number from houston to new orleans?
+i need the airline and flight number from philadelphia to washington dc.
+could you give me the airline and flight number from detroit to minneapolis?
+airline and flight number from san diego to portland, please.
+what's the airline and flight number for the flight from tampa to orlando?
+i'm looking for the airline and flight number from st. louis to kansas city.
+could you please tell me the airline and flight number from san antonio to el paso?
+airline and flight number from charlotte to raleigh.
+i need the airline and flight number from indianapolis to cincinnati.
+what is the airline and flight number from jacksonville to savannah?
+could you provide me with the airline and flight number from nashville to memphis?
+airline and flight number from milwaukee to madison.
+i'd like the airline and flight number for a flight from oklahoma city to tulsa.
+please tell me the airline and flight number from omaha to lincoln.
+what's the airline and flight number for the flight from albuquerque to santa fe?
+i need the airline and flight number from tucson to flagstaff.
+could you give me the airline and flight number from reno to las vegas?
+airline and flight number from boise to idaho falls.
+what is the airline and flight number from salt lake city to provo?
+i'm looking for the airline and flight number from colorado springs to pueblo.
+could you please provide the airline and flight number from des moines to cedar rapids?
+airline and flight number from wichita to topeka.
+i need the airline and flight number from little rock to hot springs.
+what's the airline and flight number for a flight from baton rouge to lafayette?
+could you tell me the airline and flight number from biloxi to gulfport?
+airline and flight number from mobile to montgomery.
+i'd like the airline and flight number from montgomery to birmingham.
+please provide the airline and flight number from anchorage to juneau.
+what are the airline and flight number from honolulu to kahului?
+i need the airline and flight number from san juan to ponce.
+could you give me the airline and flight number from fairbanks to anchorage?
+airline and flight number from sioux falls to rapid city.
+what's the airline and flight number for the flight from fargo to grand forks?
+i'm looking for the airline and flight number from billings to bozeman.
+could you please tell me the airline and flight number from cheyenne to casper?
+airline and flight number from santa barbara to los angeles.
+i need the airline and flight number from fresno to bakersfield.
+what is the airline and flight number from modesto to stockton?
+could you provide me with the airline and flight number from salinas to monterey?
+airline and flight number from santa cruz to san jose.
+i'd like the airline and flight number for a flight from visalia to porterville.
+please tell me the airline and flight number from yuma to phoenix.
+what's the airline and flight number for the flight from lake havasu city to kingman?
+i need the airline and flight number from prescott to flagstaff.
+could you give me the airline and flight number from show low to payson?
+airline and flight number from globe to miami.
+what is the airline and flight number from safford to tucson?
+i'm looking for the airline and flight number from nogales to douglas.
+could you please provide the airline and flight number from bisbee to sierra vista?
+airline and flight number from page to flagstaff.
+i need the airline and flight number from williams to grand canyon village.
+what's the airline and flight number for a flight from sedona to prescott?
+could you tell me the airline and flight number from cottonwood to camp verde?
+airline and flight number for flights from jerome to prescott.
+i'd like the airline and flight number from payson to pine.
+please provide the airline and flight number from show low to springerville.
+what are the airline and flight number from alpine to eagar?
+i need the airline and flight number from st. johns to springerville.
+could you give me the airline and flight number from holbrook to winslow?
+airline and flight number from snowflake to taylor.
+what's the airline and flight number for the flight from kayenta to monument valley?
+i'm looking for the airline and flight number from chinle to ganado.
+could you please tell me the airline and flight number from tuba city to moenkopi?
+airline and flight number from window rock to gallup.
+i need the airline and flight number from fort defiance to crownpoint.
+what is the airline and flight number from shiprock to farmington?
+could you provide me with the airline and flight number from bloomfield to aztec?
+airline and flight number from cortez to durango.
+i'd like the airline and flight number for a flight from telluride to montrose.
+please tell me the airline and flight number from ouray to silverton.
+what's the airline and flight number for the flight from lake city to creede?
+i need the airline and flight number from south fork to del norte.
+could you give me the airline and flight number from alamosa to monte vista?
+airline and flight number from walsenburg to trinidad.
+what is the airline and flight number from la junta to rocky ford?
+i'm looking for the airline and flight number from las animas to benton.
+could you please provide the airline and flight number from ordway to akron?
+airline and flight number from wray to yuma.
+i need the airline and flight number from holyoke to haxtun.
+what's the airline and flight number for a flight from burlington to cheyenne wells?
+could you tell me the airline and flight number from flagler to kit carson?
+airline and flight number from hugo to stratton.
+i'd like the airline and flight number from limon to genoa.
+please provide the airline and flight number from eads to sheridan lake.
+what are the airline and flight number from haswell to arriba?
+i need the airline and flight number from springfield to decatur.
+could you give me the airline and flight number from peoria to bloomington?
+airline and flight number from rockford to freeport.
+what's the airline and flight number for the flight from aurora to elgin?
+i'm looking for the airline and flight number from joliet to kankakee.
+could you please tell me the airline and flight number from gary to hammond?
+
+ground_service+ground_fare
+what bus options are available from the meadowbrook airport to the city center and what are the fares?
+are there any train connections between the sunshine airport and downtown, and if so, how much do tickets cost?
+what's the taxi situation like from the riverside airport to the city center, and what's the typical fare?
+can i get a ride-sharing service from the emerald airport to downtown, and what's the estimated price?
+how much does a shuttle cost from the pinewood airport to the city center, and are there frequent departures?
+is there a subway line connecting the harbor airport and downtown, and what's the fare?
+what are the limousine services like from the crestview airport to the city center, and how expensive are they?
+are there airport express buses from the oakwood airport to downtown, and what do they charge?
+how much is a town car from the willowbrook airport to the city center, and are they readily available?
+can i take a public bus from the summit airport to downtown, and what's the fare?
+what's the cost of a taxi from the cedarwood airport to the city center, and how long does the ride take?
+are there any shared van services from the maplewood airport to downtown, and what are their rates?
+how much is an uber or lyft from the valleyview airport to the city center, and are they easy to find?
+is there a light rail connection between the cliffside airport and downtown, and how much is a ticket?
+what are the private car service options from the mountainview airport to the city center, and what are their prices?
+are there hotel shuttles available from the oceanview airport to downtown, and what do they cost?
+how do i get a taxi from the forestview airport to the city center, and what's the expected fare?
+are there any ride-hailing apps operating at the riverbend airport, and what's the typical cost to downtown?
+can i book a shuttle in advance from the meadowland airport to the city center, and how much will it be?
+what's the train schedule from the sun valley airport to downtown, and what are the ticket prices?
+how much does a cab cost from the river valley airport to the city center, and are they readily available?
+what ride-sharing options are there from the emerald isle airport to downtown, and what's the typical fare?
+are there airport shuttles operating from the pine ridge airport to the city center, and what do they charge?
+is there a metro line connecting the harbor town airport and downtown, and what's the fare?
+how much does a limo cost from the crest ridge airport to the city center, and how do i book one?
+are there express bus services from the oak grove airport to downtown, and what are the fares?
+how much is a private car from the willow creek airport to the city center, and are they easy to find?
+can i take the local bus from the summit ridge airport to downtown, and what's the fare?
+what's the average taxi fare from the cedar grove airport to the city center, and how long is the trip?
+are there shared ride vans from the maple ridge airport to downtown, and what are their rates?
+how much will an uber or lyft cost from the valley ridge airport to the city center, and are they reliable?
+is there a tram connecting the cliff ridge airport to downtown, and how much does it cost?
+what private transportation options are available from the mountain ridge airport to the city center, and what are their prices?
+do hotels offer shuttle services from the ocean ridge airport to downtown, and what are the fees?
+how can i get a cab from the forest ridge airport to the city center, and what's the approximate fare?
+are there any transportation network companies at the river ridge airport, and what's the average cost to downtown?
+can i pre-book an airport shuttle from the meadow creek airport to the city center, and how much will it be?
+what are the train timings from the sun creek airport to downtown, and how much are the tickets?
+how much is a taxi ride from the river creek airport to the city center, and are taxis easy to get?
+what are the ride-hailing possibilities from the emerald glen airport to downtown, and what's a typical fare?
+are there shuttle bus services from the pine glen airport to the city center, and what are their charges?
+does a subway run between the harbor glen airport and downtown, and how much is the fare?
+how much does a limousine service cost from the crest glen airport to the city center, and where can i book one?
+are there any express buses available from the oak glen airport to downtown, and what's the price?
+what's the cost of a private hire car from the willow glen airport to the city center, and are they readily available?
+can i catch a city bus from the summit glen airport to downtown, and how much is the fare?
+what's the typical taxi fare from the cedar glen airport to the city center, and what's the estimated travel time?
+do shared vans operate from the maple glen airport to downtown, and how much do they cost?
+what's the estimated price for an uber or lyft from the valley glen airport to the city center, and are they a convenient option?
+is there a light rail service connecting the cliff glen airport to downtown, and what's the ticket price?
+what private transport services are offered from the mountain glen airport to the city center, and what are their rates?
+are there hotel shuttles running from the ocean glen airport to downtown, and what are their charges?
+how do i hire a taxi from the forest glen airport to the city center, and what's the expected cost?
+are there app-based ride services at the river glen airport, and what's the average fare to downtown?
+can i reserve a shuttle bus in advance from the meadow valley airport to the city center, and what's the cost?
+could you tell me the train schedule from the sun valley airport to downtown and the ticket costs?
+how much is a taxi from the river valley airport to the city center, and are they always available?
+which ride-sharing services operate from the emerald valley airport to downtown, and what’s the typical fare?
+are there airport shuttles leaving from the pine valley airport to the city center, and how much are they?
+is there a metro connection between the harbor valley airport and downtown, and what’s the fare?
+how much is a limousine service from the crest valley airport to the city center, and how do i reserve one?
+are there express buses departing from the oak valley airport to downtown, and what do they charge?
+what's the price of a private hire car from the willow valley airport to the city center, and are they easily found?
+is it possible to take a public bus from the summit valley airport to downtown, and what's the fare?
+what’s the average taxi fare from the cedar valley airport to the city center, and how long does it take to get there?
+are shared ride vans an option from the maple valley airport to downtown, and what are their rates?
+what would an uber or lyft cost approximately from the valley crest airport to the city center, and are they a reliable service?
+is there a tram service connecting the cliff valley airport to downtown, and how much is a ticket?
+what private transportation options exist from the mountain valley airport to the city center, and how much do they cost?
+do hotels provide shuttle services from the ocean valley airport to downtown, and what are their fees?
+how can i secure a taxi from the forest valley airport to the city center, and roughly how much would it cost?
+are there any ride-hailing services operating at the river valley airport, and what’s the general cost to downtown?
+can i pre-book an airport shuttle from the meadow crest airport to the city center, and what will be the price?
+what are the train times from the sun crest airport to downtown, and how much do the tickets cost?
+what's the typical taxi fare from the river crest airport to the city center, and is it easy to find a taxi?
+what ride-sharing platforms are available at the emerald crest airport to downtown, and what's the average fare?
+do shuttle buses run from the pine crest airport to the city center, and how much do they charge?
+is there a subway line running between the harbor crest airport and downtown, what's the cost of a ticket?
+what does a limousine transfer from the crest wood airport to the city center cost, and how can i book one?
+are there express bus routes from the oak crest airport to downtown, and what are their prices?
+how much does it cost to hire a private car from the willow crest airport to the city center, and are they readily available?
+is there a public bus route from the summit crest airport to downtown, and what’s the fare?
+what’s the approximate cost of a taxi from the cedar crest airport to the city center, and what’s the estimated journey time?
+are there any shared vans running from the maple crest airport to downtown, and how much do they cost?
+how much would it cost to use a ride-hailing service like uber or lyft from the valley crest airport to the city center, and are they a dependable option?
+is there a light rail link connecting the cliff crest airport and downtown, and how much does a ticket cost?
+what private transport is on offer from the mountain crest airport to the city center, and what are their respective rates?
+do any hotels have a shuttle service from the ocean crest airport to downtown, and what do they charge for it?
+how can i arrange for a taxi from the forest crest airport to the city center, and what can i expect to pay?
+are there any on-demand transportation apps available at the river crest airport, and what's the average fare into the city center?
+can i make an advanced booking for a shuttle bus from the meadow wood airport to the city center, and how much will that be?
+what are the train departure times from the sun wood airport to downtown, and what are the prices of tickets?
+how much does a taxi typically cost from the river wood airport to the city center, and are taxis easily accessible there?
+what are my options for ride-sharing from the emerald wood airport to downtown, and what's the standard fare?
+are shuttle bus services available from the pine wood airport to the city center, and what are their fees?
+does a subway operate between the harbor wood airport and downtown, and how much does a fare cost?
+what's the price for a limousine from the crest wood airport to the city center, and where do i make a reservation?
+are express buses an option from the oak wood airport to downtown, and how much do they cost?
+is there a shuttle service available from lower airport to the city center, and what is the fare?
+
+airfare+flight_time
+show me the cheapest fares and flight times for flights from miami to chicago.
+what are the costs and times of flights from seattle to new orleans?
+i need the fares and flight schedules from los angeles to houston.
+what are the prices and times for flights from phoenix to charlotte?
+find the fares and flight times from san antonio to portland.
+show me the costs and flight schedules from detroit to jacksonville.
+what are the airfares and flight times from philadelphia to san diego?
+i'd like the fares and flight times for flights from indianapolis to denver.
+list the costs and flight times for flights from columbus to nashville.
+what are the prices and flight durations from milwaukee to atlanta?
+show me the fares and flight times for flights from memphis to kansas city.
+what are the costs and schedules for flights from oklahoma city to las vegas?
+i need the fares and flight times from albuquerque to raleigh.
+find the prices and times for flights from tucson to minneapolis.
+show me the costs and schedules from fresno to orlando.
+what are the airfares and flight durations from sacramento to tampa?
+i'd like the fares and schedules from long beach to miami.
+list the prices and flight times from mesa to st. louis.
+what are the costs and durations for flights from virginia beach to boston?
+show me the fares and flight schedules from oakland to new york.
+what are the prices and times for flights from tulsa to washington d.c.?
+i need the fares and flight times from honolulu to chicago.
+find the costs and flight schedules from anchorage to dallas.
+show me the airfares and durations from aurora to los angeles.
+what are the prices and schedules from colorado springs to new york?
+i'd like the costs and flight times from glendale to houston.
+list the fares and durations from chandler to san francisco.
+what are the prices and times for flights from north las vegas to miami?
+show me the costs and flight schedules from irvine to boston.
+what are the airfares and flight times from gilbert to washington d.c.?
+i need the prices and durations from garland to chicago.
+find the fares and flight schedules from plano to dallas.
+show me the costs and times from arlington to los angeles.
+what are the airfares and flight durations from henderson to new york?
+i'd like the prices and flight times from san bernardino to houston.
+list the costs and flight durations from stockton to san francisco.
+what are the fares and flight schedules from riverside to miami.
+show me the prices and flight times from corpus christi to boston.
+what are the airfares and durations from santa ana to washington d.c.?
+i need the costs and flight times from st. paul to chicago.
+find the fares and flight schedules from cincinnati to dallas.
+show me the prices and times from newark to los angeles.
+what are the airfares and flight durations from buffalo to new york?
+i'd like the costs and flight times from fort worth to houston.
+list the fares and flight schedules from austin to san francisco.
+what are the prices and flight times for flights from el paso to miami?
+show me the costs and flight schedules for flights from detroit to boston.
+what are the airfares and flight times for flights from memphis to washington d.c.?
+i need the prices and flight durations for flights from oklahoma city to chicago.
+find the fares and schedules for flights from albuquerque to dallas.
+show me the costs and flight times for flights from tucson to los angeles.
+what are the airfares and durations for flights from fresno to new york.
+i'd like the prices and flight schedules for flights from sacramento to houston.
+list the costs and times for flights from long beach to san francisco.
+what are the fares and flight durations for flights from mesa to miami?
+show me the prices and flight schedules for flights from virginia beach to boston.
+what are the airfares and flight times for flights from oakland to washington d.c.?
+i need the costs and flight durations for flights from tulsa to chicago.
+find the fares and schedules for flights from honolulu to dallas.
+show me the prices and flight times for flights from anchorage to los angeles.
+what are the airfares and durations for flights from aurora to new york?
+i'd like the costs and flight schedules for flights from colorado springs to houston.
+list the fares and times for flights from glendale to san francisco.
+what are the prices and flight durations for flights from chandler to miami?
+show me the costs and flight schedules for flights from north las vegas to boston.
+what are the airfares and flight times for flights from irvine to washington d.c.?
+i need the prices and flight durations for flights from gilbert to chicago.
+find the fares and schedules for flights from garland to dallas.
+show me the costs and flight times for flights from plano to los angeles.
+what are the airfares and durations for flights from arlington to new york?
+i'd like the prices and flight times for flights from henderson to houston.
+list the costs and flight durations for flights from san bernardino to san francisco.
+what are the fares and flight schedules for flights from stockton to miami.
+show me the prices and flight times for flights from riverside to boston.
+what are the airfares and durations for flights from corpus christi to washington d.c.?
+i need the costs and flight times for flights from santa ana to chicago.
+find the fares and flight schedules for flights from st. paul to dallas.
+show me the prices and flight times for flights from cincinnati to los angeles.
+what are the airfares and durations for flights from newark to new york?
+i'd like the costs and flight schedules for flights from buffalo to houston.
+list the fares and flight times for flights from fort worth to san francisco.
+what are the prices and flight durations for flights from austin to miami.
+show me the costs and schedules for flights from el paso to boston.
+what are the airfares and times for flights from memphis to san francisco?
+i need the prices and durations for flights from oklahoma city to miami?
+find the fares and flight times for flights from albuquerque to boston?
+show me the costs and times for flights from tucson to washington d.c.?
+what are the fares and durations for flights from fresno to chicago?
+i'd like the prices and flight schedules for flights from sacramento to dallas.
+list the costs and times for flights from long beach to los angeles?
+what are the fares and durations for flights from mesa to new york?
+show me the prices and flight times for flights from virginia beach to houston.
+what are the airfares and flight durations for flights from oakland to san francisco.
+i need the costs and flight times for flights from tulsa to miami.
+find the fares and schedules for flights from honolulu to boston.
+show me the prices and times for flights from anchorage to washington d.c.
+what are the airfares and flight durations for flights from aurora to chicago.
+i'd like the costs and flight schedules for flights from colorado springs to dallas.
+list the fares and times for flights from glendale to los angeles.
+
+cheapest
+find the lowest fare from chicago to los angeles.
+show me the most affordable flight to new york.
+what's the cheapest flight from miami to denver?
+give me the least expensive flight to san francisco.
+display the cheapest airfare from dallas to houston.
+what's the lowest price flight from boston to atlanta?
+find me the cheapest flight from seattle to phoenix.
+show the most economical flight from philadelphia to orlando.
+what's the most budget-friendly flight to las vegas?
+give me the cheapest fare to san diego.
+find the lowest airfare from portland to new orleans.
+show me the most affordable flight from detroit to minneapolis.
+what's the cheapest flight to tampa?
+display the most economical airfare to austin.
+give me the lowest priced flight from charlotte to kansas city.
+what's the cheapest way to fly to nashville?
+find me the most affordable flight to baltimore.
+show the least expensive fare from milwaukee to memphis.
+what's the cheapest flight to raleigh?
+give me the lowest fare to jacksonville.
+find the most affordable airfare from indianapolis to columbus.
+show me the cheapest flight from san antonio to albuquerque.
+what's the lowest price to fly to salt lake city?
+display the most economical flight from fresno to sacramento.
+give me the cheapest fare to oklahoma city.
+find the lowest airfare from louisville to tucson.
+show me the most affordable flight to long beach.
+what's the cheapest flight from mesa to el paso?
+give me the lowest fare to norfolk.
+find the most economical airfare to buffalo.
+show me the cheapest flight from tulsa to omaha.
+what's the lowest price flight from virginia beach to colorado springs?
+display the most budget-friendly fare to des moines.
+find the cheapest flight to grand rapids.
+show me the most affordable fare to wichita.
+what's the cheapest flight to durham?
+give me the lowest airfare to arlington.
+display the most economical flight to fort worth.
+find the cheapest fare from bakersfield to stockton.
+show me the most affordable flight to reno.
+what's the lowest priced flight to tacoma?
+give me the cheapest fare from aurora to santa ana.
+find the lowest airfare to corpus christi.
+what’s the most economical flight from riverside to glendale?
+show me the cheapest flight to anchorage.
+display the most affordable fare to honolulu.
+give me the lowest priced flight from st. louis to cincinnati.
+what’s the cheapest flight from pittsburgh to cleveland?
+find the most budget-friendly fare from newark to providence.
+show me the cheapest flight to jackson.
+find the lowest fare to birmingham.
+what’s the cheapest flight from rochester to albany?
+give me the most affordable fare to baton rouge.
+display the most economical flight to madison.
+find the lowest priced flight from greensboro to montgomery.
+show me the cheapest fare to lubbock.
+what's the most affordable flight from garland to laredo?
+give me the cheapest airfare from irving to chandler.
+find the most economical flight from huntington beach to fayetteville.
+show me the lowest priced fare from fort lauderdale to boise.
+what’s the cheapest flight from spokane to yonkers.
+give me the lowest airfare from tacoma to augusta.
+find the cheapest fare from amarillo to allentown.
+show me the most affordable flight from henderson to akron.
+what's the lowest priced flight from mcallen to columbia.
+give me the cheapest fare to independence.
+find the most economical airfare to thornton.
+show me the cheapest flight to springfield.
+what’s the lowest price to fly to pembroke pines.
+display the most affordable fare from concord to aurora.
+give me the cheapest flight from sunnyvale to charleston.
+find the lowest airfare to elk grove.
+show me the most economical flight to cape coral.
+what's the cheapest fare from elizabeth to palmdale.
+give me the lowest priced flight from waco to salinas.
+find the most affordable airfare to gainesville.
+show me the cheapest flight from visalia to daly city.
+what's the lowest price to fly to orange.
+display the most economical flight from killeen to centennial.
+find the cheapest fare to columbia.
+show me the most affordable flight to fremont.
+what's the cheapest airfare to san bernardino.
+give me the lowest priced flight from moreno valley to pomona.
+display the most economical fare to santa clara.
+find the cheapest flight from oceanside to pasadena.
+show me the most affordable airfare to fullerton.
+what's the lowest price flight to corona.
+give me the cheapest fare to roseville.
+find the most economical flight to murrieta.
+show me the cheapest airfare to vallejo.
+what's the lowest priced flight from temecula to north las vegas.
+display the most affordable fare from broken arrow to rancho cucamonga.
+give me the cheapest flight to san mateo.
+find the lowest airfare from clovis to carson.
+show me the most economical flight to el cajon.
+what's the cheapest fare to ventura.
+give me the lowest priced flight from simi valley to west covina.
+find the most affordable airfare from san angelo to high point.
+show me the cheapest flight from rio rancho to mesquite.
+
+aircraft+flight+flight_no
+i want to fly from miami to los angeles on american airlines around noon. what aircraft is used, and what's the flight number?
+i'm looking for a flight from chicago to houston on united airlines departing around 7 pm. what type of aircraft is it, and what's the flight number?
+i need a flight from new york to san francisco on delta airlines leaving around 8 am. what's the aircraft and flight number?
+i'd like to fly from atlanta to seattle on alaska airlines around 9 am. what kind of plane is used, and what is the flight number?
+i'm searching for a flight from dallas to boston on jetblue around 10 am. tell me the aircraft and flight number.
+i want to fly from phoenix to denver on southwest airlines around 11 am. what aircraft is used and what's the flight number?
+i need a flight from las vegas to orlando on frontier airlines leaving around noon. what type of aircraft and what's the flight number?
+i'd like to fly from san diego to portland on spirit airlines around 1 pm. tell me the aircraft and the flight number.
+i'm looking for a flight from minneapolis to new orleans on allegiant air around 2 pm. what's the aircraft and flight number?
+i want to fly from charlotte to philadelphia on american airlines around 3 pm. what's the aircraft and the flight number?
+i need a flight from kansas city to san antonio on southwest airlines leaving at 4 pm. what type of aircraft and flight number?
+i'd like to fly from nashville to memphis on delta airlines around 5 pm. what kind of plane is it, and what's the flight number?
+i'm searching for a flight from indianapolis to milwaukee on united airlines departing at 6 pm. what's the aircraft and flight number?
+i want to fly from jacksonville to raleigh on jetblue leaving around 7 pm. what type of aircraft and the flight number?
+i need a flight from columbus to cleveland on frontier airlines leaving around 8 pm. what aircraft is used, and what's the flight number?
+i'd like to fly from richmond to norfolk on spirit airlines around 9 pm. what kind of plane is it and the flight number?
+i'm looking for a flight from birmingham to mobile on allegiant air departing around 10 pm. what's the aircraft and flight number?
+i want to fly from albuquerque to tucson on american airlines leaving around 11 pm. what type of aircraft and flight number?
+i need to fly from san jose to sacramento on southwest airlines at midnight. what aircraft is it, and what is the flight number?
+i want to fly from oklahoma city to tulsa on delta airlines at 1 am. what is the aircraft type and flight number?
+i need a flight from omaha to des moines on united airlines leaving at 2 am. what is the aircraft and flight number?
+i'd like to fly from wichita to topeka on jetblue at 3 am. what is the aircraft and flight number?
+i'm looking for a flight from little rock to fort smith on frontier airlines departing at 4 am. what is the aircraft and flight number?
+i want to fly from baton rouge to shreveport on spirit airlines at 5 am. what type of aircraft is used, and what's the flight number?
+i need a flight from reno to las vegas on allegiant air leaving at 6 am. what type of aircraft is it and the flight number?
+i'd like to fly from boise to idaho falls on american airlines at 7 am. what kind of plane is it and what's the flight number?
+i'm searching for a flight from spokane to yakima on southwest airlines departing at 8 am. what is the aircraft and what is the flight number?
+i want to fly from portland to salem on delta airlines leaving around 9 am. what type of plane and flight number?
+i need a flight from eugene to bend on united airlines departing around 10 am. what's the aircraft and the flight number?
+what aircraft is used on the 6 am flight from houston to denver, and what is the flight number?
+i'm looking for a flight from los angeles to new york. what aircraft does american airlines use, and what's the flight number?
+what type of plane is used for the 8 pm flight from chicago to miami, and what is the flight number for that flight?
+i need the aircraft and flight number for a southwest flight from phoenix to dallas departing around noon.
+tell me the aircraft type and flight number for the 10 am united airlines flight from san francisco to boston.
+what kind of airplane is used on the delta flight from atlanta to seattle leaving around 7 pm, and what's the flight number?
+i'd like to know the aircraft and flight number for the jetblue flight from new york to orlando leaving around 9 am.
+i want to fly from dallas to los angeles on american airlines. what's the aircraft type and the flight number?
+i need the aircraft and flight number for the united flight from denver to chicago.
+what aircraft does southwest use for flights from houston to las vegas, and what's a typical flight number?
+what's the aircraft type and flight number for the delta flight from miami to atlanta?
+i want the aircraft information and flight number for a jetblue flight from boston to san francisco.
+i'm flying from seattle to new york on alaska airlines. what aircraft do they use, and what's the flight number?
+what's the plane type and flight number for the frontier flight from orlando to denver?
+i need the aircraft and flight number for the spirit flight from las vegas to chicago.
+what aircraft is used on allegiant air flights from los angeles to phoenix, and what are the flight numbers like?
+i'm flying from new york to los angeles. what aircraft does american airlines use, and what's the flight number?
+i need to know the aircraft type and flight number for the united flight from chicago to san francisco.
+what aircraft does delta fly from atlanta to miami, and what's the flight number?
+what type of plane is used on the jetblue flight from boston to new york, and what's the flight number?
+i'm flying from san francisco to seattle on alaska airlines. what aircraft and flight number?
+i'd like to know the plane type and flight number for the frontier flight from denver to orlando.
+what kind of aircraft does spirit airlines use from chicago to las vegas, and what's the flight number?
+i want to fly from phoenix to los angeles on allegiant air. what's the aircraft and flight number?
+i need to know the aircraft and flight number for the american airlines flight from los angeles to new york.
+what aircraft is used on united flights from san francisco to chicago, and what's the flight number?
+i want to fly from miami to atlanta on delta. what aircraft and flight number?
+what type of plane is used on jetblue flights from new york to boston, and what is the flight number?
+i'm flying from seattle to san francisco on alaska airlines. what's the aircraft type and flight number?
+what plane and flight number does frontier airlines use from orlando to denver?
+i'd like to fly from las vegas to chicago on spirit airlines. what aircraft and flight number?
+what aircraft and flight number does allegiant air use for flights from los angeles to phoenix?
+i'm flying from new york to chicago on american airlines. what's the aircraft and flight number?
+what plane does united use from chicago to san francisco, and what's the flight number?
+i need to know the aircraft and flight number for the delta flight from atlanta to miami.
+i'm flying from boston to new york on jetblue. what aircraft and flight number?
+what aircraft does alaska airlines use for flights from san francisco to seattle, and what is the flight number?
+i want to fly from denver to orlando on frontier airlines. what aircraft and flight number are used?
+i need to fly from chicago to las vegas on spirit airlines. what type of aircraft and flight number?
+i'm looking for a flight from phoenix to los angeles on allegiant air. what aircraft and flight number do they use?
+i want to fly from chicago to new york. what aircraft and flight number does american airlines use?
+i need the aircraft type and flight number for the united flight from san francisco to chicago.
+what aircraft and flight number does delta use for flights from miami to atlanta?
+i'm flying from new york to boston on jetblue. what's the aircraft type and flight number?
+i want to know the aircraft and flight number for alaska airlines flights from seattle to san francisco.
+i'm looking for a flight from orlando to denver on frontier airlines. what aircraft and flight number do they typically use?
+what kind of aircraft does spirit use for flights from las vegas to chicago, and what's the flight number?
+i want to fly from los angeles to phoenix on allegiant air. what's the aircraft and flight number?
+i need to fly from new york to chicago on american airlines. what aircraft do they use, and what's the flight number?
+what aircraft does united use on flights from chicago to san francisco, and what is the flight number?
+i'm looking for a delta flight from atlanta to miami. what's the aircraft and flight number?
+i want to fly from boston to new york on jetblue. what's the aircraft type and the flight number?
+i'd like to know the aircraft and flight number for alaska airlines flights from seattle to san francisco.
+what kind of plane and flight number does frontier airlines use on flights from orlando to denver?
+what aircraft does spirit use from las vegas to chicago, and what is the flight number?
+i want to fly from los angeles to phoenix. what aircraft and flight number does allegiant air use?
+i need to know the aircraft and flight number for american airlines flights from chicago to new york.
+what type of plane does united use from san francisco to chicago, and what's the flight number?
+i'd like to fly from miami to atlanta on delta. what aircraft and flight number do they use?
+i'm looking for a jetblue flight from new york to boston. what's the aircraft and flight number?
+i want to know the aircraft type and flight number for alaska airlines flights from san francisco to seattle.
+what kind of plane does frontier airlines use for flights from denver to orlando, and what's the flight number?
+i need to know the aircraft and flight number for spirit airlines flights from chicago to las vegas.
+i'm looking for an allegiant air flight from phoenix to los angeles. what's the aircraft and flight number?
+i want to fly from new york to chicago. what aircraft and flight number does american airlines typically use?
+i'd like to know the aircraft and flight number for united flights from chicago to san francisco.
+what kind of plane and flight number does delta use from atlanta to miami?
+i'm looking for a jetblue flight from boston to new york. what's the aircraft type and the flight number?
+i need to know the aircraft and flight number for alaska airlines flights from seattle to san francisco.
+i'm looking for a flight from orlando to denver on frontier airlines. what aircraft and flight number do they use?
+
