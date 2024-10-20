@@ -1,4 +1,3 @@
-- Add EarlyStopping parameter
 - Add RNN
 - ADD LSTM
 - ADD GRU

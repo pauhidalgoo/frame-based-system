@@ -10,7 +10,8 @@ from datetime import datetime
 
 from keras.utils import to_categorical
 from keras.models import Sequential
-from keras.layers import Embedding, LSTM, Dense, GlobalMaxPooling1D, Dropout, Conv1D, GlobalAveragePooling1D
+from keras.layers import Embedding, LSTM, Dense, GlobalMaxPooling1D, Dropout, Conv1D, GlobalAveragePooling1D,  SimpleRNN, LSTM, GRU, Bidirectional
+from keras.callbacks import EarlyStopping
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils.class_weight import compute_class_weight
 from keras.metrics import F1Score
@@ -54,7 +55,7 @@ class IntentRecognition:
         self.hyperparams = {**default_hyperparams, **hyperparams}
         default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None}
         self.prep_config = {**default_config, **prep_config}
-        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_class_weights':True}
+        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_class_weights':True, 'early_stopping': False, 'early_stopping_patience': 5}
         self.train_config = {**default_train, **train_config}
         self.initial_model = model
         self.training_times = training_times
@@ -260,6 +261,9 @@ class IntentRecognition:
             # Compile the model
             self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', F1Score(average=self.train_config['f1_type'])])
 
+            callbacks_list = []
+            if self.train_config['early_stopping']:
+                callbacks_list.append(EarlyStopping(patience=self.train_config['early_stopping_patience']))
             # Fit the model and capture the training history
             history = self.model.fit(
                 self.train_pad_sequences, 
@@ -268,6 +272,7 @@ class IntentRecognition:
                 epochs=self.hyperparams['epochs'], 
                 validation_data=(self.val_pad_sequences, self.val_encoded_labels),
                 class_weight=class_weights_dict,
+                callbacks = callbacks_list,
                 verbose=self.verbosing
             )
 
