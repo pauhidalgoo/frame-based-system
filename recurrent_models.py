@@ -136,10 +136,10 @@ def create_model(model_type):
         model.add(Bidirectional(LSTM(128, return_sequences=True)))
         model.add(LSTM(64, return_sequences=True))
         model.add(GlobalMaxPooling1D())
-    elif model_type == 'ConvBidirectionalLSTM':
+    elif model_type == 'BidirectionalConvLSTM':
         model.add(Conv1D(32, kernel_size=3, activation='relu'))
         model.add(Bidirectional(LSTM(128, return_sequences=False)))
-    elif model_type == 'ConvBidirectionalLSTM_Max':
+    elif model_type == 'BidirectionalConvLSTM_Max':
         model.add(Conv1D(32, kernel_size=3, activation='relu'))
         model.add(Bidirectional(LSTM(128, return_sequences=True)))
         model.add(GlobalMaxPooling1D())
@@ -190,8 +190,8 @@ model_types = [
     'StackedLSTM', 'StackedLSTM_Max', 'StackedGRU', 'StackedGRU_Max',
     'BidirectionalGRU', 'BidirectionalGRU_Max', 'BidirectionalStackedLSTM',
     'BidirectionalStackedLSTM_Max', 'BidirectionalStackedLSTM_Max_Medium',
-    'BidirectionalStackedLSTM_Max_Big', 'ConvBidirectionalLSTM',
-    'ConvBidirectionalLSTM_Max', 'DropoutLSTM', 'DropoutGRU', 'DropoutLSTM_128',
+    'BidirectionalStackedLSTM_Max_Big', 'BidirectionalConvLSTM',
+    'BidirectionalConvLSTM_Max', 'DropoutLSTM', 'DropoutGRU', 'DropoutLSTM_128',
     'DropoutGRU_128', 'StackedBidirectionalLSTM_Max', 'StackedBidirectionalGRU_Max',
     'BidirectionalDropoutLSTM', 'BidirectionalDropoutGRU'
 ]

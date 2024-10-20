@@ -321,16 +321,18 @@ class IntentRecognition:
                     best_history = history.history
                     
                     # Copy the best model
-                    best_model = tf.keras.models.clone_model(self.model)
-                    best_model.set_weights(self.model.get_weights())
+                    if not self.architecture_name.startswith("Bidirectional"):
+                        best_model = tf.keras.models.clone_model(self.model)
+                        best_model.set_weights(self.model.get_weights())
             else:
                 if val_f1 > best_val_f1:
                     best_val_f1 = val_f1
                     best_history = history.history
                     
                     # Copy the best model
-                    best_model = tf.keras.models.clone_model(self.model)
-                    best_model.set_weights(self.model.get_weights())
+                    if not self.architecture_name.startswith("Bidirectional"):
+                        best_model = tf.keras.models.clone_model(self.model)
+                        best_model.set_weights(self.model.get_weights())
 
         # Calculate average metrics across all training runs
         average_training_acc = np.mean(training_acc_list)
@@ -348,9 +350,10 @@ class IntentRecognition:
         best_model_validation_f1 = best_history['val_f1_score']
 
         # Set the self.model to the best model
-        self.model = tf.keras.models.clone_model(best_model)
-        self.model.set_weights(best_model.get_weights())
-        self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'f1_score'])
+        if not self.architecture_name.startswith("Bidirectional"):
+            self.model = tf.keras.models.clone_model(best_model)
+            self.model.set_weights(best_model.get_weights())
+            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'f1_score'])
 
         # Store all the collected information in the training_information dictionary
         self.training_information = {
@@ -366,7 +369,7 @@ class IntentRecognition:
             'best_model_validation_f1': best_model_validation_f1
         }
 
-        self._save_results(complete_results, './results/complete_results.csv')
+        self._save_results(complete_results, './results/complete_results_rec.csv')
         average_metrics = [{
             'architecture_name': self.architecture_name,
             'summary': self.model.get_config(),
@@ -380,7 +383,7 @@ class IntentRecognition:
             **self.prep_config,
             **self.train_config
         }]
-        self._save_results(average_metrics, './results/average_metrics.csv')
+        self._save_results(average_metrics, './results/average_metrics_rec.csv')
 
         best_metrics = [{
             'architecture_name': self.architecture_name,
@@ -393,7 +396,7 @@ class IntentRecognition:
             **self.prep_config,
             **self.train_config
         }]
-        self._save_results(best_metrics, './results/best_model_metrics.csv')
+        self._save_results(best_metrics, './results/best_model_metrics_rec.csv')
 
 
         # Empty prints for new line
