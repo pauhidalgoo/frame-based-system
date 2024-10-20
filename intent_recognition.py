@@ -55,7 +55,7 @@ class IntentRecognition:
         self.hyperparams = {**default_hyperparams, **hyperparams}
         default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None}
         self.prep_config = {**default_config, **prep_config}
-        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_class_weights':True, 'early_stopping': False, 'early_stopping_patience': 5}
+        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_class_weights':True, 'early_stopping': True, 'early_stopping_patience': 5}
         self.train_config = {**default_train, **train_config}
         self.initial_model = model
         self.training_times = training_times
@@ -278,7 +278,7 @@ class IntentRecognition:
 
             histories.append(history.history)
 
-            for epoch in range(self.hyperparams['epochs']):
+            for epoch in range(len(history.history['accuracy'])):
                 epoch_result = {
                     'architecture_name': self.architecture_name,
                     'summary': self.model.get_config(),
@@ -297,7 +297,7 @@ class IntentRecognition:
                 complete_results.append(epoch_result)
 
             # Extract the final epoch's metrics
-            final_epoch = self.hyperparams['epochs'] - 1
+            final_epoch = len(history.history['accuracy']) - 1
             training_acc = history.history['accuracy'][final_epoch]
             training_f1 = history.history['f1_score'][final_epoch]
 
