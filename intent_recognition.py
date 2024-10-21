@@ -39,7 +39,7 @@ class IntentRecognition:
             use_class_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", save_results=True):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", use_augmented_data=False, save_results=True):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
@@ -60,6 +60,7 @@ class IntentRecognition:
         self.initial_model = model
         self.training_times = training_times
         self.verbosing = verbosing
+        self.use_augmented_data = use_augmented_data
         self.training_information = {}
         self._load_data()
         self.preprocess_data()
@@ -75,7 +76,11 @@ class IntentRecognition:
         train_data = pd.read_csv('baiges/data/train.csv', header=None)
         test_data = pd.read_csv('baiges/data/test.csv', header=None)
         val_data = train_data.tail(900)
-        train_data = pd.read_csv('baiges/data/train.csv', header=None, nrows=4078)
+        if self.use_augmented_data:
+            train_data = pd.read_csv('baiges/train_data_augmented.csv', header=None)
+        else:
+            train_data = pd.read_csv('baiges/data/train.csv', header=None, nrows=4078)
+        
         
         self.train_data = train_data
         self.test_data = test_data
@@ -245,8 +250,7 @@ class IntentRecognition:
         complete_results = []
 
         for i in range(self.training_times):
-            if self.verbosing != 0:
-                print(f"\rTraining model {i+1}/{self.training_times}", end='', flush=True)
+            print(f"\rTraining model {i+1}/{self.training_times}", end='', flush=True)
 
             # Rebuild the model for each training run
             self.model = Sequential()
@@ -400,8 +404,7 @@ class IntentRecognition:
 
 
         # Empty prints for new line
-        if self.verbosing != 0:
-            print('\n')
+        print('\n')
 
     
     def print_training_information(self):
