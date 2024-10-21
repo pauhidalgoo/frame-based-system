@@ -63,6 +63,12 @@ def create_model(model_type):
     elif model_type == 'BidirectionalLSTM_Max':
         model.add(Bidirectional(LSTM(64, return_sequences=True)))
         model.add(GlobalMaxPooling1D())
+    elif model_type == 'BidirectionalLSTM_Max_ave':
+        model.add(Bidirectional(LSTM(64, return_sequences=True), merge_mode="ave"))
+        model.add(GlobalMaxPooling1D())
+    elif model_type == 'BidirectionalLSTM_Max_sum':
+        model.add(Bidirectional(LSTM(64, return_sequences=True), merge_mode="sum"))
+        model.add(GlobalMaxPooling1D())
     elif model_type == 'ConvLSTM':
         model.add(Conv1D(64, kernel_size=3, activation='relu'))
         model.add(LSTM(64, return_sequences=False))
@@ -159,11 +165,11 @@ def create_model(model_type):
         model.add(GRU(128, return_sequences=True))
         model.add(Dropout(0.5))
         model.add(GlobalMaxPooling1D())
-    elif model_type == 'StackedBidirectionalLSTM_Max':
+    elif model_type == 'BidirectionalStackedLSTMLSTM_Max':
         model.add(Bidirectional(LSTM(64, return_sequences=True)))
         model.add(Bidirectional(LSTM(32, return_sequences=True)))
         model.add(GlobalMaxPooling1D())
-    elif model_type == 'StackedBidirectionalGRU_Max':
+    elif model_type == 'BidirectionalStackedGRUGRU_Max':
         model.add(Bidirectional(GRU(64, return_sequences=True)))
         model.add(Bidirectional(GRU(32, return_sequences=True)))
         model.add(GlobalMaxPooling1D())
@@ -180,7 +186,14 @@ def create_model(model_type):
 
 
 model_types = [
-    'SimpleRNN', 'SimpleRNN_Max', 'SimpleRNN_Max64', 'SimpleRNN_Max256',
+     'BidirectionalStackedLSTMLSTM_Max', 'BidirectionalStackedGRUGRU_Max',
+    'BidirectionalDropoutLSTM', 'BidirectionalDropoutGRU', 'BidirectionalLSTM_Max_ave',
+    'BidirectionalLSTM_Max_sum'
+]
+
+
+"""
+'SimpleRNN', 'SimpleRNN_Max', 'SimpleRNN_Max64', 'SimpleRNN_Max256',
     'SimpleRNN_Avg64', 'SimpleRNN_Avg256', 'LSTM', 'LSTM_16', 'LSTM_32',
     'LSTM_Max', 'LSTM_Max_16', 'LSTM_Max_32', 'LSTM_Max_64', 'LSTM_Max_256',
     'LSTM_Average', 'LSTM_Average_128', 'GRU_Max', 'GRU_Max_32', 'GRU_Average',
@@ -192,6 +205,5 @@ model_types = [
     'BidirectionalStackedLSTM_Max', 'BidirectionalStackedLSTM_Max_Medium',
     'BidirectionalStackedLSTM_Max_Big', 'BidirectionalConvLSTM',
     'BidirectionalConvLSTM_Max', 'DropoutLSTM', 'DropoutGRU', 'DropoutLSTM_128',
-    'DropoutGRU_128', 'StackedBidirectionalLSTM_Max', 'StackedBidirectionalGRU_Max',
-    'BidirectionalDropoutLSTM', 'BidirectionalDropoutGRU'
-]
+    'DropoutGRU_128',
+"""
