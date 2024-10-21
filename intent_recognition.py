@@ -165,7 +165,7 @@ class IntentRecognition:
         self.train_sequences = self.tokenizer.texts_to_sequences(self.train_sentences)
 
         max_seq_len = max(map(len, self.train_sequences))
-        self.train_pad_sequences = pad_sequences(self.train_sequences, maxlen=max_seq_len, padding='pre')
+        self.train_pad_sequences = pad_sequences(self.train_sequences, maxlen=max_seq_len, padding='post')
 
         # Encode the labels
         self.label_encoder = LabelEncoder()
@@ -181,8 +181,8 @@ class IntentRecognition:
         test_sequences_pretok = self.test_sentences.copy()
         self.test_sequences = self.tokenizer.texts_to_sequences(self.test_sentences)
 
-        self.val_pad_sequences = pad_sequences(self.val_sequences, maxlen=max_seq_len, padding='pre')
-        self.test_pad_sequences = pad_sequences(self.test_sequences, maxlen=max_seq_len, padding='pre')
+        self.val_pad_sequences = pad_sequences(self.val_sequences, maxlen=max_seq_len, padding='post')
+        self.test_pad_sequences = pad_sequences(self.test_sequences, maxlen=max_seq_len, padding='post')
 
         self.val_labels = self._format_labels(list(self.val_data[2]))
         self.test_labels = self._format_labels(list(self.test_data[2]))
