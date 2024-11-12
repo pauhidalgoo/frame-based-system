@@ -74,13 +74,13 @@ class IntentRecognition:
         """
         Loads the training, validation, and test datasets.
         """
-        train_data = pd.read_csv('/data/train.csv', header=None)
-        test_data = pd.read_csv('/data/test.csv', header=None)
+        train_data = pd.read_csv('../data/train.csv', header=None)
+        test_data = pd.read_csv('../data/test.csv', header=None)
         val_data = train_data.tail(900)
         if self.use_augmented_data:
-            train_data = pd.read_csv('/train_data_augmented.csv', header=None)
+            train_data = pd.read_csv('../data/train_data_augmented.csv', header=None)
         else:
-            train_data = pd.read_csv('/data/train.csv', header=None, nrows=4078)
+            train_data = pd.read_csv('../data/train.csv', header=None, nrows=4078)
         
         
         self.train_data = train_data
