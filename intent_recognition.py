@@ -53,7 +53,7 @@ class IntentRecognition:
         self.save_results = save_results
         default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 5, 'batch_size': 32}
         self.hyperparams = {**default_hyperparams, **hyperparams}
-        default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None}
+        default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None, 'padding':'pre'}
         self.prep_config = {**default_config, **prep_config}
         default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_class_weights':True, 'early_stopping': True, 'early_stopping_patience': 5}
         self.train_config = {**default_train, **train_config}
@@ -170,7 +170,7 @@ class IntentRecognition:
         self.train_sequences = self.tokenizer.texts_to_sequences(self.train_sentences)
 
         max_seq_len = max(map(len, self.train_sequences))
-        self.train_pad_sequences = pad_sequences(self.train_sequences, maxlen=max_seq_len, padding='post')
+        self.train_pad_sequences = pad_sequences(self.train_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
 
         # Encode the labels
         self.label_encoder = LabelEncoder()
@@ -186,8 +186,8 @@ class IntentRecognition:
         test_sequences_pretok = self.test_sentences.copy()
         self.test_sequences = self.tokenizer.texts_to_sequences(self.test_sentences)
 
-        self.val_pad_sequences = pad_sequences(self.val_sequences, maxlen=max_seq_len, padding='post')
-        self.test_pad_sequences = pad_sequences(self.test_sequences, maxlen=max_seq_len, padding='post')
+        self.val_pad_sequences = pad_sequences(self.val_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
+        self.test_pad_sequences = pad_sequences(self.test_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
 
         self.val_labels = self._format_labels(list(self.val_data[2]))
         self.test_labels = self._format_labels(list(self.test_data[2]))
