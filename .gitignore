@@ -1,3 +1,4 @@
-/baiges/MODEL.h5
+/BERT/MODEL.h5
 nlu_ATIS_data.tar.gz
 *.pyc
+__pycache__/
