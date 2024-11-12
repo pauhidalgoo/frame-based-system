@@ -2,3 +2,4 @@
 nlu_ATIS_data.tar.gz
 *.pyc
 __pycache__/
+.venv/
