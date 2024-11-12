@@ -39,7 +39,7 @@ class IntentRecognition:
             use_class_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", use_augmented_data=False, save_results=True):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", use_augmented_data=False, save_results=True, results_file_name = "./results/results"):
         """
         Initializes the IntentRecognition class with hyperparameters and a Keras model.
 
@@ -51,6 +51,7 @@ class IntentRecognition:
         """
         self.architecture_name = name
         self.save_results = save_results
+        self.results_file = results_file_name
         default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 5, 'batch_size': 32}
         self.hyperparams = {**default_hyperparams, **hyperparams}
         default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None, 'padding':'pre'}
@@ -73,13 +74,13 @@ class IntentRecognition:
         """
         Loads the training, validation, and test datasets.
         """
-        train_data = pd.read_csv('../data/train.csv', header=None)
-        test_data = pd.read_csv('../data/test.csv', header=None)
+        train_data = pd.read_csv('/data/train.csv', header=None)
+        test_data = pd.read_csv('/data/test.csv', header=None)
         val_data = train_data.tail(900)
         if self.use_augmented_data:
-            train_data = pd.read_csv('../train_data_augmented.csv', header=None)
+            train_data = pd.read_csv('/train_data_augmented.csv', header=None)
         else:
-            train_data = pd.read_csv('../data/train.csv', header=None, nrows=4078)
+            train_data = pd.read_csv('/data/train.csv', header=None, nrows=4078)
         
         
         self.train_data = train_data
@@ -123,8 +124,8 @@ class IntentRecognition:
         return cleaned_labels_list, cleaned_pad_sequences_list
     
     def _save_results(self, results_dict, file_path, header=None):
-        if self.save_results != None and self.save_results != False:
-            if self.save_results == "few" and file_path == "./results/complete_results.csv":
+        if self.save_results != None:
+            if self.save_results == "few" and file_path == self.results_file + "_complete.csv":
                 pass
             with open(file_path, mode='a', newline='', encoding="utf-8") as file:
                 writer = csv.DictWriter(file, fieldnames=header if header else results_dict[0].keys())
@@ -373,7 +374,7 @@ class IntentRecognition:
             'best_model_validation_f1': best_model_validation_f1
         }
 
-        self._save_results(complete_results, './results/complete_results_rec.csv')
+        self._save_results(complete_results, self.results_file + '_complete.csv')
         average_metrics = [{
             'architecture_name': self.architecture_name,
             'summary': self.model.get_config(),
@@ -387,7 +388,7 @@ class IntentRecognition:
             **self.prep_config,
             **self.train_config
         }]
-        self._save_results(average_metrics, './results/average_metrics_rec.csv')
+        self._save_results(average_metrics, self.results_file + '_average.csv')
 
         best_metrics = [{
             'architecture_name': self.architecture_name,
@@ -400,7 +401,7 @@ class IntentRecognition:
             **self.prep_config,
             **self.train_config
         }]
-        self._save_results(best_metrics, './results/best_model_metrics_rec.csv')
+        self._save_results(best_metrics,  self.results_file + '_best.csv')
 
 
         # Empty prints for new line
