@@ -7,16 +7,19 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
 from datetime import datetime
+from collections import Counter
 
 from keras.utils import to_categorical
 from keras.models import Sequential
-from keras.layers import Embedding, LSTM, Dense, GlobalMaxPooling1D, Dropout, Conv1D, GlobalAveragePooling1D,  SimpleRNN, LSTM, GRU, Bidirectional
+from keras.layers import Embedding, LSTM, Dense, GlobalMaxPooling1D, Dropout, Conv1D, GlobalAveragePooling1D,  SimpleRNN, LSTM, GRU, Bidirectional, TimeDistributed
 from keras.callbacks import EarlyStopping
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils.class_weight import compute_class_weight
 from keras.metrics import F1Score
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras import backend as K
+
 
 class NamedEntityRecognition:
     """
@@ -36,12 +39,12 @@ class NamedEntityRecognition:
         train_config (dict): A dictionary of parameters for training
             selection_metric
             f1_type
-            use_class_weights
+            use_sample_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", use_augmented_data=False, save_results=True):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", use_augmented_data=False, save_results=True, results_file_name = "./results/NER_results"):
         """
-        Initializes the IntentRecognition class with hyperparameters and a Keras model.
+        Initializes the NER class with hyperparameters and a Keras model.
 
         Args:
             hyperparams (dict): A dictionary containing hyperparameters like 'vocab_size', 'embedding_dim', 'epochs', and 'batch_size'.
@@ -51,11 +54,12 @@ class NamedEntityRecognition:
         """
         self.architecture_name = name
         self.save_results = save_results
+        self.results_file = results_file_name
         default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 5, 'batch_size': 32}
         self.hyperparams = {**default_hyperparams, **hyperparams}
         default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None, 'padding':'pre'}
         self.prep_config = {**default_config, **prep_config}
-        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_class_weights':True, 'early_stopping': True, 'early_stopping_patience': 5}
+        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_sample_weights':True, 'early_stopping': True, 'early_stopping_patience': 5}
         self.train_config = {**default_train, **train_config}
         self.initial_model = model
         self.training_times = training_times
@@ -73,13 +77,13 @@ class NamedEntityRecognition:
         """
         Loads the training, validation, and test datasets.
         """
-        train_data = pd.read_csv('baiges/data/train.csv', header=None)
-        test_data = pd.read_csv('baiges/data/test.csv', header=None)
+        train_data = pd.read_csv('../data/train.csv', header=None)
+        test_data = pd.read_csv('../data/test.csv', header=None)
         val_data = train_data.tail(900)
         if self.use_augmented_data:
-            train_data = pd.read_csv('baiges/train_data_augmented.csv', header=None)
+            train_data = pd.read_csv('../train_data_augmented.csv', header=None)
         else:
-            train_data = pd.read_csv('baiges/data/train.csv', header=None, nrows=4078)
+            train_data = pd.read_csv('../data/train.csv', header=None, nrows=4078)
         
         
         self.train_data = train_data
@@ -98,10 +102,9 @@ class NamedEntityRecognition:
             list: A list of formatted label strings.
         """
         labels = list(s.replace('"', '') for s in labels)
-        labels = list(s.replace(' ', '') for s in labels)
         return labels
     
-    def _remove_values_and_indices(self, values_to_remove, labels_list, pad_sequences_list, only_remove=False):
+    def _remove_sentences(self, list_labels, list_sequences):
         """
         Removes specified values and their corresponding indices from labels and sequences.
 
@@ -113,18 +116,21 @@ class NamedEntityRecognition:
         Returns:
             tuple: A tuple containing the cleaned labels list and the cleaned padded sequences array.
         """
-        indices_to_remove = [idx for idx, item in enumerate(labels_list) if item in values_to_remove]
-        cleaned_labels_list = [item for item in labels_list if item not in values_to_remove]
-        cleaned_pad_sequences_list = [item for idx, item in enumerate(pad_sequences_list) if idx not in indices_to_remove]
+        idx_to_remove = []
+        labels_to_remove = []
+        for idx, labels in enumerate(list_labels):
+            for label in labels:
+                if label not in self.unique_entities:
+                    idx_to_remove.append(idx)
+                    labels_to_remove.append(label)
 
-        if not only_remove:
-            cleaned_pad_sequences_list = np.array(cleaned_pad_sequences_list) 
-            
-        return cleaned_labels_list, cleaned_pad_sequences_list
+        labels = [elem for i, elem in enumerate(list_labels) if i not in idx_to_remove]
+        sequences = [elem for i, elem in enumerate(list_sequences) if i not in idx_to_remove]
+        return labels, np.array(sequences)
     
     def _save_results(self, results_dict, file_path, header=None):
         if self.save_results != None:
-            if self.save_results == "few" and file_path == "./results/complete_results.csv":
+            if self.save_results == "few" and file_path == self.results_file + "_complete.csv":
                 pass
             with open(file_path, mode='a', newline='', encoding="utf-8") as file:
                 writer = csv.DictWriter(file, fieldnames=header if header else results_dict[0].keys())
@@ -137,6 +143,13 @@ class NamedEntityRecognition:
         model.summary(line_length=80, print_fn=lambda x: string_list.append(x))
         string_list = [str(a) for a in string_list]
         return "\n".join(string_list)
+    
+    def _count_unique_entities(self, list_of_label_sentences):
+        flat_labels = []
+        for labels in list_of_label_sentences:
+            flat_labels += labels.split()
+        c = Counter(flat_labels)
+        return len(c), list(c.keys())
 
     def preprocess_data(self):
         """
@@ -150,8 +163,6 @@ class NamedEntityRecognition:
 
         def preprocess_text(sentence):
             words = word_tokenize(sentence)
-            if self.prep_config['remove_stopwords']:
-                words = [word for word in words if word not in stop_words]
             if self.prep_config['lemmatize']:
                 words = [lemmatizer.lemmatize(word) for word in words]
             if self.prep_config['stem']:
@@ -160,7 +171,10 @@ class NamedEntityRecognition:
 
         # Training data
         self.train_sentences = [preprocess_text(sent) for sent in list(self.train_data[0])]
-        self.train_labels = self._format_labels(list(self.train_data[2]))
+        self.train_labels = self._format_labels(list(self.train_data[1]))
+
+        num_unique_entities, self.unique_entities = self._count_unique_entities(self.train_labels)
+
 
         # Tokenize the sentences
         self.tokenizer = Tokenizer(self.hyperparams['vocab_size'])
@@ -170,51 +184,88 @@ class NamedEntityRecognition:
         self.train_sequences = self.tokenizer.texts_to_sequences(self.train_sentences)
 
         max_seq_len = max(map(len, self.train_sequences))
+        self.max_seq_len = max_seq_len
         self.train_pad_sequences = pad_sequences(self.train_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
 
         # Encode the labels
-        self.label_encoder = LabelEncoder()
-        self.train_numerical_labels = self.label_encoder.fit_transform(self.train_labels)
-        self.num_classes = len(self.label_encoder.classes_)
-        self.train_encoded_labels = to_categorical(self.train_numerical_labels, num_classes=self.num_classes)
+        label_encoder = LabelEncoder()
+        self.label_encoder = label_encoder.fit(["<pad>"]+list(self.unique_entities))
+        label_encoder = self.label_encoder
+        self.train_numerical_labels =[label_encoder.transform(t.split()) for t in self.train_labels]
+        self.train_pad_labels = pad_sequences(self.train_numerical_labels, maxlen = max_seq_len, padding=self.prep_config['padding'])
+
+        num_classes = len(self.unique_entities)
+        self.train_labels_one_hot = [to_categorical(a, num_classes +1) for a in self.train_pad_labels]
 
         # Validation and test data
+        self.val_labels = self._format_labels(list(self.val_data[1]))
+        self.test_labels = self._format_labels(list(self.test_data[1]))
+
+
         self.val_sentences = [preprocess_text(sent) for sent in list(self.val_data[0])]
         self.test_sentences = [preprocess_text(sent) for sent in list(self.test_data[0])]
 
         self.val_sequences = self.tokenizer.texts_to_sequences(self.val_sentences)
-        test_sequences_pretok = self.test_sentences.copy()
         self.test_sequences = self.tokenizer.texts_to_sequences(self.test_sentences)
 
-        self.val_pad_sequences = pad_sequences(self.val_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
-        self.test_pad_sequences = pad_sequences(self.test_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
+        val_pad_sequences_old = pad_sequences(self.val_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
+        test_pad_sequences_old = pad_sequences(self.test_sequences, maxlen=max_seq_len, padding=self.prep_config['padding'])
 
-        self.val_labels = self._format_labels(list(self.val_data[2]))
-        self.test_labels = self._format_labels(list(self.test_data[2]))
 
-        # Remove unwanted labels that don't appear in the training data
-        values_to_remove = ['day_name','airfare+flight','flight+airline','flight_no+airline']
-        self.val_labels, self.val_pad_sequences = self._remove_values_and_indices(values_to_remove, self.val_labels, self.val_pad_sequences)
+        _test_labels = [label.split() for label in self.test_labels]
+        _val_labels = [label.split() for label in self.val_labels]
+        val_labels2, self.val_pad_sequences = self._remove_sentences(_val_labels, val_pad_sequences_old)
+        test_labels2, self.test_pad_sequences = self._remove_sentences(_test_labels, test_pad_sequences_old)
 
-        old_test_labels = np.array(self.test_labels.copy())
-        self.test_labels, self.test_pad_sequences = self._remove_values_and_indices(values_to_remove, self.test_labels, self.test_pad_sequences)
-        _ , self.test_sentences_removed = self._remove_values_and_indices(values_to_remove, old_test_labels, test_sequences_pretok, only_remove=True)
+        val_numerical_labels = [self.label_encoder.transform(t) for t in val_labels2]
+        test_numerical_labels = [self.label_encoder.transform(t) for t in test_labels2]
 
-        # Encode labels
-        self.val_encoded_labels = to_categorical(self.label_encoder.transform(self.val_labels), num_classes=self.num_classes)
-        self.test_encoded_labels = to_categorical(self.label_encoder.transform(self.test_labels), num_classes=self.num_classes)
 
+        self.val_pad_labels = pad_sequences(val_numerical_labels, maxlen=max_seq_len, padding=self.prep_config['padding'])
+        self.test_pad_labels = pad_sequences(test_numerical_labels, maxlen=max_seq_len, padding=self.prep_config['padding'])
+
+
+
+        self.val_labels_one_hot = [to_categorical(a, num_classes +1) for a in self.val_pad_labels]
+        self.test_labels_one_hot = [to_categorical(a, num_classes +1) for a in self.test_pad_labels]
+        self.num_classes = num_classes
 
         # Print number of classes of training val and test
         if self.verbosing:
-            print(f"Number of classes in training data: {self.num_classes}")
+            print(f"Number of classes in training data: {num_classes}")
 
         class_weights = compute_class_weight(
             class_weight='balanced',
-            classes=np.unique(self.train_numerical_labels),
-            y=self.train_numerical_labels
+            classes=np.unique(self.train_pad_labels.flatten()),
+            y=self.train_pad_labels.flatten()
         )
-        self.class_weights_dict = dict(enumerate(class_weights))
+
+        class_weights_dict = dict(enumerate(class_weights))
+
+        class_weights_dict = {i: weight for i, weight in enumerate(class_weights)}
+
+        self.sample_weights = np.ones(self.train_pad_labels.shape)
+        for class_label, weight in class_weights_dict.items():
+            self.sample_weights[self.train_pad_labels == class_label] = weight
+
+    @staticmethod
+    def f1(y_true, y_pred):
+        # Fet amb el chat nidea de si esta be
+        def recall(y_true, y_pred):
+            true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+            possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+            recall = true_positives / (possible_positives + K.epsilon())
+            return recall
+
+        def precision(y_true, y_pred):
+            true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+            predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+            precision = true_positives / (predicted_positives + K.epsilon())
+            return precision
+
+        precision = precision(y_true, y_pred)
+        recall = recall(y_true, y_pred)
+        return 2 * ((precision * recall) / (precision + recall + K.epsilon()))
     
     def train_model(self):
         """
@@ -226,7 +277,7 @@ class NamedEntityRecognition:
             raise ValueError("Model must be an instance of a Keras Sequential model")
         
 
-        class_weights_dict = self.class_weights_dict if self.train_config['use_class_weights'] else None
+        sample_weights = self.sample_weights if self.train_config['use_sample_weights'] else None
         # Extract layers from the initial model
         initial_layers = self.initial_model.layers
         # Vocabulary size and embedding dimensions
@@ -260,10 +311,10 @@ class NamedEntityRecognition:
                 config = layer.get_config()
                 cloned_layer = layer.__class__.from_config(config)
                 self.model.add(cloned_layer)
-            self.model.add(Dense(self.num_classes, activation="softmax"))  # Output layer
+            self.model.add(TimeDistributed(Dense(self.num_classes + 1, activation="softmax")))  # Output layer
 
             # Compile the model
-            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', F1Score(average=self.train_config['f1_type'])])
+            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', self.f1])
 
             callbacks_list = []
             if self.train_config['early_stopping']:
@@ -271,11 +322,11 @@ class NamedEntityRecognition:
             # Fit the model and capture the training history
             history = self.model.fit(
                 self.train_pad_sequences, 
-                self.train_encoded_labels, 
+                np.array(self.train_labels_one_hot),
                 batch_size=self.hyperparams['batch_size'], 
                 epochs=self.hyperparams['epochs'], 
-                validation_data=(self.val_pad_sequences, self.val_encoded_labels),
-                class_weight=class_weights_dict,
+                validation_data=(self.val_pad_sequences, np.array(self.val_labels_one_hot)),
+                sample_weight = sample_weights,
                 callbacks = callbacks_list,
                 verbose=self.verbosing
             )
@@ -289,10 +340,10 @@ class NamedEntityRecognition:
                     'run_number': i + 1,
                     'epoch': epoch + 1,
                     'training_acc': history.history['accuracy'][epoch],
-                    'training_f1': history.history['f1_score'][epoch],
+                    'training_f1': history.history['f1'][epoch],
                     'training_loss': history.history['loss'][epoch],
                     'val_acc': history.history['val_accuracy'][epoch],
-                    'val_f1': history.history['val_f1_score'][epoch],
+                    'val_f1': history.history['val_f1'][epoch],
                     'val_loss': history.history['val_loss'][epoch],
                     **self.hyperparams, # ** el que fa és separa les keys i values dels diccionaris ;) tope útil ho vaig aprendre fa poc
                     **self.prep_config, # un sol * crec que separa els valors d'un iterador
@@ -303,11 +354,11 @@ class NamedEntityRecognition:
             # Extract the final epoch's metrics
             final_epoch = len(history.history['accuracy']) - 1
             training_acc = history.history['accuracy'][final_epoch]
-            training_f1 = history.history['f1_score'][final_epoch]
+            training_f1 = history.history['f1'][final_epoch]
 
             training_loss = history.history['loss'][final_epoch]
             val_acc = history.history['val_accuracy'][final_epoch]
-            val_f1 = history.history['val_f1_score'][final_epoch]
+            val_f1 = history.history['val_f1'][final_epoch]
             val_loss = history.history['val_loss'][final_epoch]
 
             # Append metrics to the respective lists
@@ -350,14 +401,14 @@ class NamedEntityRecognition:
         best_model_training_acc = best_history['accuracy']
         best_model_validation_acc = best_history['val_accuracy']
 
-        best_model_training_f1 = best_history['f1_score']
-        best_model_validation_f1 = best_history['val_f1_score']
+        best_model_training_f1 = best_history['f1']
+        best_model_validation_f1 = best_history['val_f1']
 
         # Set the self.model to the best model
         if not self.architecture_name.startswith("Bidirectional"):
             self.model = tf.keras.models.clone_model(best_model)
             self.model.set_weights(best_model.get_weights())
-            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', 'f1_score'])
+            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', self.f1])
 
         # Store all the collected information in the training_information dictionary
         self.training_information = {
@@ -373,7 +424,7 @@ class NamedEntityRecognition:
             'best_model_validation_f1': best_model_validation_f1
         }
 
-        self._save_results(complete_results, './results/complete_results_rec.csv')
+        self._save_results(complete_results, self.results_file + '_complete.csv')
         average_metrics = [{
             'architecture_name': self.architecture_name,
             'summary': self.model.get_config(),
@@ -387,7 +438,7 @@ class NamedEntityRecognition:
             **self.prep_config,
             **self.train_config
         }]
-        self._save_results(average_metrics, './results/average_metrics_rec.csv')
+        self._save_results(average_metrics, self.results_file + '_average.csv')
 
         best_metrics = [{
             'architecture_name': self.architecture_name,
@@ -400,7 +451,7 @@ class NamedEntityRecognition:
             **self.prep_config,
             **self.train_config
         }]
-        self._save_results(best_metrics, './results/best_model_metrics_rec.csv')
+        self._save_results(best_metrics,  self.results_file + '_best.csv')
 
 
         # Empty prints for new line
