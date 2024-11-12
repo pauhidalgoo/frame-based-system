@@ -66,4 +66,4 @@ new_data = pd.DataFrame(new_rows)
 train_data = pd.concat([train_data, new_data], ignore_index=True)
 
 # Save the updated train_data DataFrame
-train_data.to_csv('baiges/train_data_augmented.csv', index=False)
+train_data.to_csv('baiges/train_data_augmented.csv', header=False, index=False)
