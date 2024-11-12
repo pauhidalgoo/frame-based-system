@@ -1,6 +1,8 @@
+import keras
+import tensorflow as tf
 class TransformerBlock(keras.layers.Layer):
-    def __init__(self, embed_dim, num_heads, ff_dim, rate=0.1):
-        super().__init__()
+    def __init__(self, embed_dim, num_heads, ff_dim, rate=0.1, **kwargs):
+        super().__init__(**kwargs)
         self.att = keras.layers.MultiHeadAttention(
             num_heads=num_heads, key_dim=embed_dim
         )
@@ -25,8 +27,8 @@ class TransformerBlock(keras.layers.Layer):
 
 
 class TokenAndPositionEmbedding(keras.layers.Layer):
-    def __init__(self, maxlen, vocab_size, embed_dim):
-        super().__init__()
+    def __init__(self, maxlen, vocab_size, embed_dim, **kwargs):
+        super().__init__(**kwargs)
         self.token_emb = keras.layers.Embedding(
             input_dim=vocab_size, output_dim=embed_dim
         )
@@ -41,3 +43,8 @@ class TokenAndPositionEmbedding(keras.layers.Layer):
 
 
 
+def create_transformer(number_of_blocks = 1, num_heads = 2, embed_dim = 50, ff_mult = 4):
+    model = keras.Sequential()
+    for _ in range(number_of_blocks):
+        model.add(TransformerBlock(embed_dim=embed_dim, num_heads=num_heads, ff_dim=embed_dim*ff_mult))
+    return model

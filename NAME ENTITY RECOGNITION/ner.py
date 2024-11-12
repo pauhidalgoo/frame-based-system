@@ -19,7 +19,7 @@ from keras.metrics import F1Score
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras import backend as K
-
+from transformer_prof import TokenAndPositionEmbedding
 
 class NamedEntityRecognition:
     """
@@ -42,7 +42,7 @@ class NamedEntityRecognition:
             use_sample_weights
         model (keras.models.Sequential): A Keras Sequential model to be trained.
     """
-    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", use_augmented_data=False, save_results=True, results_file_name = "./results/NER_results"):
+    def __init__(self, model, hyperparams = {}, prep_config = {}, train_config = {}, training_times=1, automatic_train=False, verbosing=0, is_transformer = False, name=f"test_{datetime.now().strftime('%m%d_%H%M')}", use_augmented_data=False, save_results=True, results_file_name = "./results/NER_results"):
         """
         Initializes the NER class with hyperparameters and a Keras model.
 
@@ -54,6 +54,7 @@ class NamedEntityRecognition:
         """
         self.architecture_name = name
         self.save_results = save_results
+        self.is_transformer = is_transformer
         self.results_file = results_file_name
         default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 5, 'batch_size': 32}
         self.hyperparams = {**default_hyperparams, **hyperparams}
@@ -134,7 +135,7 @@ class NamedEntityRecognition:
                 pass
             with open(file_path, mode='a', newline='', encoding="utf-8") as file:
                 writer = csv.DictWriter(file, fieldnames=header if header else results_dict[0].keys())
-                # writer.writeheader() # Uncomment if the files aren't created
+                writer.writeheader() # Uncomment if the files aren't created
                 writer.writerows(results_dict)
 
     def _get_model_summary(self, model: tf.keras.Model) -> str:
@@ -305,7 +306,11 @@ class NamedEntityRecognition:
 
             # Rebuild the model for each training run
             self.model = Sequential()
-            self.model.add(Embedding(vocab_size, embedding_dim))  # Embedding layer
+            if not self.is_transformer:
+                self.model.add(Embedding(vocab_size, embedding_dim))  # Embedding layer
+            else:
+                self.model.add(TokenAndPositionEmbedding(self.max_seq_len, vocab_size, embedding_dim))
+
             for layer in initial_layers:
                 # Clone each layer to ensure independence between models
                 config = layer.get_config()
