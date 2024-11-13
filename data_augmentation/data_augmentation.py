@@ -1,10 +1,10 @@
 import pandas as pd
 
-train_data = pd.read_csv('baiges/data/train.csv', header=None, nrows=4078)
+train_data = pd.read_csv('data/train.csv', header=None, nrows=4078)
 print(train_data[2].value_counts())
 print()
 
-train_data2 = pd.read_csv('baiges/train_data_augmented.csv', header=None)
+train_data2 = pd.read_csv('data/train_data_augmented.csv', header=None)
 print(train_data2[2].value_counts())
 print()
 
