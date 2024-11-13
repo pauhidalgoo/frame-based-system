@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
 from datetime import datetime
+from tensorflow.keras.optimizers import Adam
 from collections import Counter
 
 from keras.utils import to_categorical
@@ -339,9 +340,8 @@ class NamedEntityRecognition:
                 cloned_layer = layer.__class__.from_config(config)
                 self.model.add(cloned_layer)
             self.model.add(TimeDistributed(Dense(self.num_classes + 1, activation="softmax")))  # Output layer
-
             # Compile the model
-            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', self.f1])
+            self.model.compile(loss='categorical_crossentropy', optimizer="adam", metrics=['accuracy', self.f1])
 
             callbacks_list = []
             if self.train_config['early_stopping']:
@@ -558,13 +558,14 @@ class NamedEntityRecognition:
         print('Evaluating model...')
         loss, accuracy, f1 = self.model.evaluate(
             self.test_pad_sequences, 
-            self.test_encoded_labels, 
+            self.test_labels_one_hot, 
             batch_size=self.hyperparams['batch_size']
         )
 
         f1 = np.mean(f1)
         print(f"Test accuracy: {accuracy}")
         print(f"Test Macro F1: {f1}")
+        print(classification_report(self.model, self.test_pad_sequences, self.test_sequences, self.test_labels_one_hot))
     
     def get_training_information(self):
         """
@@ -577,7 +578,7 @@ class NamedEntityRecognition:
     
     def view_wrong_predictions(self):
         probs = self.model.predict(self.test_pad_sequences)
-        _predicted_labels = np.argmax(probs, axis=1)
+        _predicted_labels = np.argmax(probs, axis=2)
         predicted_labels = self.label_encoder.inverse_transform(_predicted_labels)
 
         for i in range(0, len(predicted_labels)):
