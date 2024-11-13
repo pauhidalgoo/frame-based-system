@@ -20,6 +20,9 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras import backend as K
 from transformer_prof import TokenAndPositionEmbedding
+from typing import List, Tuple, Set, Any
+from collections import defaultdict
+from sklearn.metrics import classification_report, f1_score
 
 class NamedEntityRecognition:
     """
@@ -58,9 +61,9 @@ class NamedEntityRecognition:
         self.results_file = results_file_name
         default_hyperparams = {'vocab_size': 500, 'embedding_dim': 768, 'epochs': 5, 'batch_size': 32}
         self.hyperparams = {**default_hyperparams, **hyperparams}
-        default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None, 'padding':'pre'}
+        default_config = {'lemmatize':False, 'stem':False, 'remove_stopwords':False, 'custom_stopwords':None, 'padding':'post'}
         self.prep_config = {**default_config, **prep_config}
-        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_sample_weights':True, 'early_stopping': True, 'early_stopping_patience': 5}
+        default_train = {'selection_metric':"accuracy", 'f1_type':"macro", 'use_sample_weights':True, 'early_stopping': False, 'early_stopping_patience': 5}
         self.train_config = {**default_train, **train_config}
         self.initial_model = model
         self.training_times = training_times
@@ -217,6 +220,7 @@ class NamedEntityRecognition:
         _val_labels = [label.split() for label in self.val_labels]
         val_labels2, self.val_pad_sequences = self._remove_sentences(_val_labels, val_pad_sequences_old)
         test_labels2, self.test_pad_sequences = self._remove_sentences(_test_labels, test_pad_sequences_old)
+        self.val_labels2 = val_labels2
 
         val_numerical_labels = [self.label_encoder.transform(t) for t in val_labels2]
         test_numerical_labels = [self.label_encoder.transform(t) for t in test_labels2]
@@ -249,25 +253,40 @@ class NamedEntityRecognition:
         for class_label, weight in class_weights_dict.items():
             self.sample_weights[self.train_pad_labels == class_label] = weight
 
-    @staticmethod
+    @staticmethod 
     def f1(y_true, y_pred):
-        # Fet amb el chat nidea de si esta be
-        def recall(y_true, y_pred):
-            true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-            possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-            recall = true_positives / (possible_positives + K.epsilon())
-            return recall
+        """
+        Calculate macro F1 score for multi-class classification matching sklearn's implementation.
+        
+        Args:
+            y_true: One-hot encoded true labels (batch_size, ..., num_classes)
+            y_pred: Predicted probability distributions (batch_size, ..., num_classes)
+        """
+        # Get predicted classes
+        y_pred = K.one_hot(K.argmax(y_pred, axis=-1), K.int_shape(y_pred)[-1])
+        
+        # Flatten tensors
+        y_true_flat = K.reshape(y_true, (-1, K.int_shape(y_true)[-1]))
+        y_pred_flat = K.reshape(y_pred, (-1, K.int_shape(y_pred)[-1]))
+        
+        # Calculate per-class metrics
+        true_positives = K.sum(y_true_flat * y_pred_flat, axis=0)
+        false_positives = K.sum(y_pred_flat * (1 - y_true_flat), axis=0)
+        false_negatives = K.sum(y_true_flat * (1 - y_pred_flat), axis=0)
+        
+        # Calculate precision and recall
+        precision = true_positives / (true_positives + false_positives + K.epsilon())
+        recall = true_positives / (true_positives + false_negatives + K.epsilon())
+        
+        # Calculate F1 scores
+        f1_scores = 2 * ((precision * recall) / (precision + recall + K.epsilon()))
+        
+        # Handle cases where precision + recall = 0
+        zero_mask = K.equal(precision + recall, 0)
+        f1_scores = K.switch(zero_mask, K.zeros_like(f1_scores), f1_scores)
+        
+        return K.mean(f1_scores)
 
-        def precision(y_true, y_pred):
-            true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-            predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
-            precision = true_positives / (predicted_positives + K.epsilon())
-            return precision
-
-        precision = precision(y_true, y_pred)
-        recall = recall(y_true, y_pred)
-        return 2 * ((precision * recall) / (precision + recall + K.epsilon()))
-    
     def train_model(self):
         """
         Trains the Keras model multiple times using the training data and hyperparameters.
@@ -293,6 +312,9 @@ class NamedEntityRecognition:
         val_f1_list = []
         val_loss_list = []
         histories = []
+        evaluation_results = []
+        reports = []
+        sci_f1 = []
 
         # Variables to track the best model
         best_val_acc = -np.inf
@@ -394,6 +416,36 @@ class NamedEntityRecognition:
                         best_model = tf.keras.models.clone_model(self.model)
                         best_model.set_weights(self.model.get_weights())
 
+
+            val_predictions = self.model.predict(self.val_pad_sequences)
+            _predicted_labels = np.argmax(val_predictions, axis=2)
+            if self.prep_config['padding'] == "post":
+                _predicted_labels = [a[:len(b)] for a,b in zip(_predicted_labels, self.val_labels2)]
+            else:
+                _predicted_labels = [a[max(0, len(a)-len(b)):] for a,b in zip(_predicted_labels, self.val_labels2)]
+            
+            print(len(self.val_labels2))
+            print(len(_predicted_labels))
+            predicted_labels = [list(self.label_encoder.inverse_transform(label)) for label in _predicted_labels]
+            tp, fn, fp, tot, err = self.evaluate([a for a in self.val_labels2], predicted_labels)
+
+            flattened_true_labels = [label for sublist in self.val_labels2 for label in sublist]
+            flattened_predicted_labels = [label for sublist in predicted_labels for label in sublist]
+
+            # Calculate macro F1 score and append to sci_f1
+            sci_f1_score = f1_score(flattened_true_labels, flattened_predicted_labels, average='macro')
+            sci_f1.append(sci_f1_score)
+            
+            evaluation_results.append({
+                'run_number': i + 1,
+                'true_positive': tp,
+                'false_negative': fn,
+                'false_positive': fp,
+                'total_errors': err,
+                'total_tokens': tot
+            })
+            reports.append(self.classification_report(self.model, self.val_pad_sequences, self.val_sequences, self.val_labels_one_hot))
+
         # Calculate average metrics across all training runs
         average_training_acc = np.mean(training_acc_list)
         average_training_f1 = np.mean(training_f1_list)
@@ -415,6 +467,10 @@ class NamedEntityRecognition:
             self.model.set_weights(best_model.get_weights())
             self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy', self.f1])
 
+
+
+        
+
         # Store all the collected information in the training_information dictionary
         self.training_information = {
             'average_training_acc': average_training_acc,
@@ -426,7 +482,10 @@ class NamedEntityRecognition:
             'best_model_training_acc': best_model_training_acc,
             'best_model_training_f1': best_model_training_f1,
             'best_model_validation_acc': best_model_validation_acc,
-            'best_model_validation_f1': best_model_validation_f1
+            'best_model_validation_f1': best_model_validation_f1,
+            'evaluation_results': evaluation_results,
+            'reports': reports,
+            'sci_f1': sci_f1
         }
 
         self._save_results(complete_results, self.results_file + '_complete.csv')
@@ -439,6 +498,13 @@ class NamedEntityRecognition:
             'average_val_acc': average_val_acc,
             'average_val_f1': average_val_f1,
             'average_val_loss': average_val_loss,
+            'average_tp': np.mean([a['true_positive'] for a in evaluation_results]),
+            'average_fp': np.mean([a['false_positive'] for a in evaluation_results]),
+            'average_fn': np.mean([a['false_negative'] for a in evaluation_results]),
+            'average_errors': np.mean([a['total_errors'] for a in evaluation_results]),
+            'average_tokens': np.mean([a['total_tokens'] for a in evaluation_results]),
+            'sci_f1': np.mean(sci_f1),
+            'reports': reports,
             **self.hyperparams,
             **self.prep_config,
             **self.train_config
@@ -452,6 +518,13 @@ class NamedEntityRecognition:
             'best_model_training_f1': best_model_training_f1[-1],
             'best_model_validation_acc': best_model_validation_acc[-1],
             'best_model_validation_f1': best_model_validation_f1[-1],
+            'average_tp': np.mean([a['true_positive'] for a in evaluation_results]),
+            'average_fp': np.mean([a['false_positive'] for a in evaluation_results]),
+            'average_fn': np.mean([a['false_negative'] for a in evaluation_results]),
+            'average_errors': np.mean([a['total_errors'] for a in evaluation_results]),
+            'average_tokens': np.mean([a['total_tokens'] for a in evaluation_results]),
+            'sci_f1': np.max(sci_f1),
+            'reports': reports,
             **self.hyperparams,
             **self.prep_config,
             **self.train_config
@@ -509,8 +582,91 @@ class NamedEntityRecognition:
 
         for i in range(0, len(predicted_labels)):
             if self.test_labels[i] != predicted_labels[i]:
-                print(i)
                 print('Sentence: ', self.test_sentences_removed[i])
                 print('Original label: ', self.test_labels[i])
                 print('Predicted label: ', predicted_labels[i])
                 print()
+
+    def preds_to_index(self, preds, seq_lens):
+            '''
+            Turn predictions to numerical indexes, flatten the sentences and discard padding.
+            '''
+            idx_preds = []
+            for pred, seq_len in zip(preds,seq_lens):
+                for l in range(seq_len):
+                    idx_preds.append(np.argmax(pred[l]))
+            return idx_preds
+
+    def classification_report(self, model, pad_sequences, sequences, one_hot):
+        preds = model.predict(pad_sequences)
+        
+
+        test_labels_idx = self.preds_to_index(one_hot,[len(a) for a in sequences])
+        preds_idx = self.preds_to_index(preds, [len(a) for a in sequences])
+
+        return classification_report(test_labels_idx, preds_idx, zero_division=1.0)
+
+    def evaluate(self, data, predicted):
+        tp = 0
+        fn = 0
+        fp = 0
+        tot = 0
+        err = 0
+        self.matrix = defaultdict(int)
+
+        
+        for idx, (gold_sentence, predicted_sentence) in enumerate(zip(data, predicted)):
+            gold_entities = self.decode_entities(gold_sentence)
+            predicted_entities = self.decode_entities(predicted_sentence)
+            tp += len(gold_entities.intersection(predicted_entities))
+            fn += len(gold_entities.difference(predicted_entities))
+            fp += len(predicted_entities.difference(gold_entities))
+            
+            if gold_entities != predicted_entities:
+                #print("Sentence index:", idx)
+                #print("GOLD sentence: ", gold_sentence)
+                #print("PRED sentence: ", predicted_sentence)
+                for i in range(len(gold_sentence)):
+                    if gold_sentence[i][0] != predicted_sentence[i][0]:
+                        #print(f"ERROR {i} --- Gold: {gold_sentence[i]} Predicted: {predicted_sentence[i]}")
+                        err += 1
+                    tot += 1
+                #print()
+
+            for gold_token, predicted_token in zip(gold_sentence, predicted_sentence):
+                if gold_token[0] != 'O':
+                    self.matrix[(gold_token[0][2:], predicted_token[0][2:])] += 1
+        
+        return tp, fn, fp, tot, err
+
+    def decode_entities(self, phrase: List[Tuple[Any, str]]) -> Set[Tuple[int, int, str]]:
+        """
+        Decode entities from a phrase.
+
+        Parameters
+        ----------
+        phrase : list
+            Phrase.
+
+        Returns
+        -------
+        set
+            Set of entities.
+        """
+        first_idx = -1
+        current_entity = None
+        
+        result = set()
+        for i, label in enumerate(phrase):
+            if label[0] == "B" or label == "O":
+                if current_entity:
+                    result.add((first_idx, i, current_entity))
+                    current_entity = None
+                if label[0] == "B":
+                    first_idx = i
+                    current_entity = label[2:]
+        
+        if current_entity:
+            result.add((first_idx, len(phrase), current_entity))
+    
+        return result
